@@ -27,25 +27,22 @@ class Graph:
 
 
     def graphValMoy(self):
-        names = []
-        results = []
-
-        for i in range(1, 30 + 1):
-            names.append(str(i))
+        essai = [10, 20, 30]
 
         for niveau in range(1,4):
-            tab = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            names = []
+            tab = []
+            for i in range(1, essai[niveau-1] + 1):
+                names.append(str(i))
+                tab.append(0)
+
             data = self.api.get({'niveau':niveau})
             
             for dat in data:
                 tab[dat['valeurJouer']-1] += 1
             
-            results.append(tab)
-
-        plt.plot(names, results[0], label='niveau : 1')
-        plt.plot(names, results[1], label='niveau : 2')
-        plt.plot(names, results[2], label='niveau : 3')
-        plt.legend()
+            plt.figure(niveau)
+            plt.plot(names, tab)
 
         plt.show()
 
