@@ -25,7 +25,7 @@ class Jeu:
                 self.j.setMise()
                 resultat = self.lancerPartie()
                 self.j.setSold(self.j.getSold() + resultat[0])
-                self.api.post({'name':self.j.name,'niveau':self.g.getNiveau(),'sold':self.j.getSold(),'mise':self.j.getMise(),'gain':resultat[0]}) 
+                self.api.postSold({'name':self.j.name,'niveau':self.g.getNiveau(),'sold':self.j.getSold(),'mise':self.j.getMise(),'gain':resultat[0]}) 
                 ##Les statistiques du level 
                 self.graph.getGraph(1)
                 #print(self.api.get({'niveau':self.g.getNiveau()}))
