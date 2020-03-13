@@ -1,0 +1,7 @@
+# Node
+/casino/serveur/node_modules
+/casino/serveur/sync.js
+/casino/serveur/sync.json
+
+# Python
+/casino/jeu/__pycache__
