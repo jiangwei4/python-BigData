@@ -19,6 +19,7 @@ class Jeu:
     def jouer(self):
         if(self.g.getNiveau() >= 4):
             print('Bravo vous avez réussi à finir le jeu') 
+            sys.exit()
         else:
             print('Le jeu commence, entrez votre mise : ?')
             while(self.j.getSold() > 0):
