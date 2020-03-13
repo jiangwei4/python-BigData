@@ -46,7 +46,7 @@ class Jeu:
         #t1 = ThreadGame() 
         #t1.setInformations(self.essai, self.j)
         #t1.start() 
-        #print(nombreRandom)
+        print(nombreRandom)
         while(self.j.getEssai() < self.g.essai):
             self.j.setNombreDeviner()
             self.api.post({'name':self.j.name,'valeurJouer':self.j.getNombreDeviner(),'niveau':self.g.getNiveau(),'essai':self.j.getEssai()+1,'randomOrdi':nombreRandom})

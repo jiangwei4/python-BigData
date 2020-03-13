@@ -2,6 +2,7 @@ const express = require('express')
 const sync = require('./sync.js')
 const app = express()
 const bodyParser = require('body-parser')
+const fs = require('fs')
 
 const PORT = 8083
 
@@ -45,13 +46,12 @@ app.post('/',(request,response) => {
 })
 
 app.get('/',(request,response) => {
-	let tmp2 = sync.get('FILE')
 	let tmp1 = new Array()
-	if(tmp2.length > 0)
-		tmp2.array.forEach(element => {
+	if(sync.get('FILE').length > 0)
+		sync.get('FILE').forEach(element => {
 			if(element.niveau = request.body.niveau)
 				tmp1.push(element)
-		});
+		})
 	response.send({'response':tmp1})
 })
 

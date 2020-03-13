@@ -12,4 +12,6 @@ class Api:
         response = requests.post( url, data = json.dumps(data),  headers=headers)
 
     def get(self,data):
-        requests.get(self.url,params = {})
+        data = {'niveau':1}
+        headers = {'content-type': 'application/json'}
+        response = requests.get(url, data = json.dumps(data), headers = headers)
