@@ -27,3 +27,18 @@ class Graph:
         plt.bar(names, values)
         plt.suptitle('Nombre de réussite')
         plt.show()
+
+
+
+        def graphValMoy(self):
+            
+            for niveau in range(0,4):
+                tab = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+                data = self.api.get({'niveau':niveau})
+                for dat in data:
+                    tab[dat.valeurJouer] += 1
+                
+                plt.bar('niveau : '+str(niveau), tab)
+                plt.suptitle('valeur choisi')
+                plt.show()
+            
