@@ -43,11 +43,11 @@ class Graph:
             for dat in data:
                 tab[dat['valeurJouer']-1] += 1
             
-            plt.figure(niveau)
+            plt.subplot(3, 1, niveau)
             plt.plot(names, tab)
-            plt.ylabel('Nombre de fois joué')
+            plt.ylabel('Niveau' + str(niveau))
             plt.xlabel('Valeur')
-            plt.suptitle('Les valeurs les plus utilisées pour le niveau' + str(niveau))
+            plt.suptitle('Les valeurs les plus utilisées par niveau')
 
         plt.show()
 
