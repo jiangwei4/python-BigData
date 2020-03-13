@@ -4,6 +4,7 @@ import random
 from ThreadGame import ThreadGame
 import sys
 from Api import Api
+from Graph import Graph
 
 class Jeu:
     def __init__(self):
@@ -11,6 +12,7 @@ class Jeu:
         self.j = Perso()
         self.g.debut(self.j)
         self.api = Api()
+        self.graph = Graph()
         self.jouer()
 #g.jouer()
 
@@ -31,6 +33,7 @@ class Jeu:
                         print('Bingo ', self.j.name, ', vous avez gagné en "',resultat[1],'" coup(s) et vous avez emporté "',resultat[0],'" € !')
                         self.j.setContinuer()
                         if(self.j.getContinuer() == 'o'):
+                            self.graph.getGraph(1)
                             self.g.addNiveau()
                             print('Super ! Vous passez au Level ',self.g.getNiveau(),'.')
                             print('Rappelez vous, le principe est le même sauf que mon nombre est maintenant entre 1 et ',self.g.getNiveau()*10,' !')
