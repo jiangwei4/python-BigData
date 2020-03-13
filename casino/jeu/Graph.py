@@ -7,7 +7,7 @@ class Graph:
         self.api = Api()
 
     def getGraph(self, niveau):
-        self.api.get(1)
+        self.api.get({'niveau':niveau})
         plt.plot([1, 2, 3, 4])
         plt.ylabel('some numbers')
         plt.show()
