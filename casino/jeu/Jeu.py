@@ -57,7 +57,7 @@ class Jeu:
     def lancerPartie(self):
         nombreRandom = random.randint(1, self.g.rang)
         print(' Alors mon nombre est : ?')
-        print(nombreRandom)
+        #print(nombreRandom)
         while(self.j.getEssai() < self.g.essai):
             t1 = ThreadGame() 
             t1.setInformations(self.g.getEssai(), self.j)
