@@ -1,5 +1,5 @@
 # Le serveur
-## Installer les packages
+## Installer les packages node
 ```
 npm install
 ```
@@ -7,13 +7,13 @@ npm install
 ```
 node serve.js
 ```
-# Lancer le projet
+#  Jeu
+## Installer les packages python
+```
+pyhton -m pip install requests
+pyhton -m pip install matplotlib
+```
+## Lancer le jeu
 ```
 pyhton Jeu.py
-```
-
-
-# Ajouter module
-```
-pyhton -m pip install module-name
 ```
