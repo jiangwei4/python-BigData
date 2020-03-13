@@ -20,6 +20,8 @@ class Graph:
                     count += 1
             values.append(count)
 
+        plt.ylabel('Nombre de personne')
+        plt.xlabel('Essai')
         plt.bar(names, values)
         plt.suptitle('Réussite par essai')
         plt.show()
@@ -42,6 +44,8 @@ class Graph:
             
             results.append(tab)
 
+        plt.ylabel('Nombre de fois jouer')
+        plt.xlabel('Valeur')
         plt.plot(names, results[0], label='niveau : 1')
         plt.plot(names, results[1], label='niveau : 2')
         plt.plot(names, results[2], label='niveau : 3')
@@ -86,6 +90,8 @@ class Graph:
             valuesGain.append(moy['gainMoy'])
             valuesSold.append(moy['soldMoy'])
         
+        plt.ylabel('Valeur en €')
+        plt.xlabel('Niveau')
         plt.plot(names, valuesMise, label='Mises moyennes')
         plt.plot(names, valuesGain, label='Gains moyens')
         plt.plot(names, valuesSold, label='Soldes moyens')
