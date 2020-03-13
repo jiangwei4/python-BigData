@@ -8,15 +8,15 @@ class Api:
         self.headers = {'content-type': 'application/json'}
 
     def post(self,data):
-        response = requests.post( self.url, data = json.dumps(data),  headers=self.headers)
+        requests.post( self.url, data = json.dumps(data),  headers=self.headers)
 
     def get(self,data):
         response = requests.get(self.url, data = json.dumps(data), headers = self.headers)
-        return response.text
+        return response.json()
 
     def postSold(self,data):
-        response = requests.post( self.url+"sold", data = json.dumps(data),  headers=self.headers)
+        requests.post( self.url+"sold", data = json.dumps(data),  headers=self.headers)
 
     def getSold(self,data):
         response = requests.get(self.url+"sold", data = json.dumps(data), headers = self.headers)
-        return response.text
+        return response.json()

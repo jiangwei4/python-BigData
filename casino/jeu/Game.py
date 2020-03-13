@@ -1,5 +1,6 @@
 
 class Game:
+    arrayEssai = [5,7,10,100]
 
     def __init__(self):
         self.niveau = 1
@@ -8,6 +9,7 @@ class Game:
 
     def addNiveau(self):
         self.niveau = self.niveau + 1
+        self.essai = self.arrayEssai[self.niveau-1]
 
     def getNiveau(self):
         return self.niveau
