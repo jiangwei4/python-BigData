@@ -27,7 +27,7 @@ class Jeu:
                 self.j.setSold(self.j.getSold() + resultat[0])
                 self.api.postSold({'name':self.j.name,'niveau':self.g.getNiveau(),'sold':self.j.getSold(),'mise':self.j.getMise(),'gain':resultat[0]}) 
                 ##Les statistiques du level 
-                self.graph.getGraph(1)
+                #self.graph.getGraph(1)
                 #print(self.api.get({'niveau':self.g.getNiveau()}))
                 ###
                 if(resultat[1] < self.g.essai):
@@ -49,12 +49,14 @@ class Jeu:
     def lancerPartie(self):
         nombreRandom = random.randint(1, self.g.rang)
         print(' Alors mon nombre est : ?')
-        #t1 = ThreadGame() 
-        #t1.setInformations(self.essai, self.j)
-        #t1.start() 
         print(nombreRandom)
         while(self.j.getEssai() < self.g.essai):
+            t1 = ThreadGame() 
+            t1.setInformations(self.g.getEssai(), self.j)
+            t1.start() 
             self.j.setNombreDeviner()
+            t1.stop() 
+            
             self.api.post({'name':self.j.name,'valeurJouer':self.j.getNombreDeviner(),'niveau':self.g.getNiveau(),'essai':self.j.getEssai()+1,'randomOrdi':nombreRandom})
             if(self.j.getNombreDeviner() == nombreRandom):
                 if(self.j.getEssai() == 0):
