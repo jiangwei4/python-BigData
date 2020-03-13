@@ -10,12 +10,15 @@ const PORT = 8083
 try {
 	fs.statSync('./sync.json')
 	sync.initSync('sync.json')
-	if(sync.get('FILE') == undefined)
+	if(sync.get('FILE') == undefined){
 		sync.set('FILE',[])	
+		console.log('fuck 1')
+	}
 } 
 catch(e){
 	sync.initSync('sync.json')
 	sync.set('FILE',[])	
+	console.log('fuck 1')
 }
 
 

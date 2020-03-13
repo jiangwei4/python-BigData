@@ -5,13 +5,11 @@ class Api:
 
     def __init__(self):
         self.url = 'http://localhost:8083/'
+        self.headers = {'content-type': 'application/json'}
 
     def post(self,data):
-        url = "http://localhost:8083/"
-        headers = {'content-type': 'application/json'}
-        response = requests.post( url, data = json.dumps(data),  headers=headers)
+        response = requests.post( self.url, data = json.dumps(data),  headers=self.headers)
 
     def get(self,data):
-        data = {'niveau':1}
-        headers = {'content-type': 'application/json'}
-        response = requests.get(url, data = json.dumps(data), headers = headers)
+        response = requests.get(self.url, data = json.dumps(data), headers = self.headers)
+        return response
