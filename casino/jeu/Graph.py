@@ -21,7 +21,7 @@ class Graph:
             values.append(count)
 
         plt.bar(names, values)
-        plt.suptitle('Nombre de réussite')
+        plt.suptitle('Réussite par essai')
         plt.show()
 
     def graphFin(self):
