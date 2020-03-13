@@ -46,6 +46,7 @@ class Graph:
 
         plt.ylabel('Nombre de fois jouer')
         plt.xlabel('Valeur')
+        plt.suptitle('Les valeurs les plus utilisées par niveau')
         plt.plot(names, results[0], label='niveau : 1')
         plt.plot(names, results[1], label='niveau : 2')
         plt.plot(names, results[2], label='niveau : 3')
