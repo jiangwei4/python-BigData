@@ -27,14 +27,13 @@ class Jeu:
                 self.j.setSold(self.j.getSold() + resultat[0])
                 self.api.post({'name':self.j.name,'niveau':self.g.getNiveau(),'sold':self.j.getSold(),'mise':self.j.getMise(),'gain':resultat[0]}) 
                 ##Les statistiques du level 
-                print(self.api.get({'niveau':self.g.getNiveau()}))
+                self.graph.getGraph(1)
                 ###
                 if(resultat[1] < self.g.essai):
                         print('Bingo ', self.j.name, ', vous avez gagné en "',resultat[1],'" coup(s) et vous avez emporté "',resultat[0],'" € !')
                         print('Souhaitez-vous continuer la partie (O/N) ?')
                         self.j.setContinuer()
                         if(self.j.getContinuer() == 'o'):
-                            self.graph.getGraph(1)
                             self.g.addNiveau()
                             print('Super ! Vous passez au Level ',self.g.getNiveau(),'.')
                             print('Rappelez vous, le principe est le même sauf que mon nombre est maintenant entre 1 et ',self.g.getNiveau()*10,' !')
