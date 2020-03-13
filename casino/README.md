@@ -10,8 +10,7 @@ node serve.js
 #  Jeu
 ## Installer les packages python
 ```
-pyhton -m pip install requests
-pyhton -m pip install matplotlib
+python -m install -r requirements.txt
 ```
 ## Lancer le jeu
 ```
