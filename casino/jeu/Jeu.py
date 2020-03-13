@@ -28,11 +28,7 @@ class Jeu:
                 self.j.setSold(self.j.getSold() + resultat[0])
                 self.api.postSold({'name':self.j.name,'niveau':self.g.getNiveau(),'sold':self.j.getSold(),'mise':self.j.getMise(),'gain':resultat[0]}) 
                 ##Les statistiques du level 
-<<<<<<< HEAD
                 self.graph.getGraph(self.g.getNiveau(), self.g.getEssai())
-=======
-                #self.graph.getGraph(1)
->>>>>>> fc4e74baa6bc9c4c310b8fc98bd5b8b84eace514
                 #print(self.api.get({'niveau':self.g.getNiveau()}))
                 ###
                 if(resultat[1] < self.g.essai):
