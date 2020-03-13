@@ -63,7 +63,7 @@ app.get('/',(request,response) => {
 	let tmp1 = new Array()
 	if(sync.get('FILE').length > 0)
 		sync.get('FILE').forEach(element => {
-			if(element.niveau = request.body.niveau)
+			if(element.niveau == request.body.niveau)
 				tmp1.push(element)
 		})
 	response.send(tmp1)
@@ -73,7 +73,7 @@ app.get('/sold',(request,response) => {
 	let tmp1 = new Array()
 	if(sync.get('SOLD').length > 0)
 		sync.get('SOLD').forEach(element => {
-			if(element.niveau = request.body.niveau)
+			if(element.niveau == request.body.niveau)
 				tmp1.push(element)
 		})
 	response.send(tmp1)

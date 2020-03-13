@@ -8,7 +8,6 @@ class Graph:
 
     def getGraph(self, niveau, essai):
         sets = self.api.get({'niveau':niveau})
-        print(sets)
 
         names = []
         values = []
@@ -21,9 +20,53 @@ class Graph:
                     count += 1
             values.append(count)
 
-
-        plt.figure(figsize=(9, 3))
-
         plt.bar(names, values)
         plt.suptitle('Nombre de réussite')
         plt.show()
+
+    def graphFin(self):
+        moys = []
+        names = []
+
+        for niveau in range(1, 4):
+            names.append(str(niveau))
+
+            mises = 0
+            gains = 0
+            solds = 0
+
+            datas = self.api.getSold({'niveau':niveau})
+
+            for data in datas:
+                mises += data['mise']
+                gains += data['gain']
+                solds += data['sold']
+
+            if len(datas) != 0:
+                miseMoy = mises/len(datas)
+                gainMoy = gains/len(datas)
+                soldMoy = solds/len(datas)
+            else:
+                miseMoy = 0
+                gainMoy = 0
+                soldMoy = 0
+
+            moys.append({'miseMoy': miseMoy, 'gainMoy': gainMoy, 'soldMoy': soldMoy})
+
+        valuesMise = []
+        valuesGain = []
+        valuesSold = []
+        for moy in moys:
+            valuesMise.append(moy['miseMoy'])
+            valuesGain.append(moy['gainMoy'])
+            valuesSold.append(moy['soldMoy'])
+        
+        plt.plot(names, valuesMise, label='Mises moyennes')
+        plt.plot(names, valuesGain, label='Gains moyens')
+        plt.plot(names, valuesSold, label='Soldes moyens')
+        plt.legend()
+
+        plt.suptitle('Mises/Gains/Soldes moyen.ne.s par niveau')
+
+        plt.show()
+            
