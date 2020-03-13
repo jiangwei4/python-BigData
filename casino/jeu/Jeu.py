@@ -19,6 +19,7 @@ class Jeu:
     def jouer(self):
         if(self.g.getNiveau() >= 4):
             print('Bravo vous avez réussi à finir le jeu') 
+            sys.exit()
         else:
             print('Le jeu commence, entrez votre mise : ?')
             while(self.j.getSold() > 0):
@@ -27,7 +28,11 @@ class Jeu:
                 self.j.setSold(self.j.getSold() + resultat[0])
                 self.api.postSold({'name':self.j.name,'niveau':self.g.getNiveau(),'sold':self.j.getSold(),'mise':self.j.getMise(),'gain':resultat[0]}) 
                 ##Les statistiques du level 
+<<<<<<< HEAD
                 self.graph.getGraph(self.g.getNiveau(), self.g.getEssai())
+=======
+                #self.graph.getGraph(1)
+>>>>>>> fc4e74baa6bc9c4c310b8fc98bd5b8b84eace514
                 #print(self.api.get({'niveau':self.g.getNiveau()}))
                 ###
                 if(resultat[1] < self.g.essai):
@@ -49,30 +54,37 @@ class Jeu:
     def lancerPartie(self):
         nombreRandom = random.randint(1, self.g.rang)
         print(' Alors mon nombre est : ?')
-        #t1 = ThreadGame() 
-        #t1.setInformations(self.essai, self.j)
-        #t1.start() 
         print(nombreRandom)
         while(self.j.getEssai() < self.g.essai):
+            t1 = ThreadGame() 
+            t1.setInformations(self.g.getEssai(), self.j)
+            t1.start() 
             self.j.setNombreDeviner()
-            self.api.post({'name':self.j.name,'valeurJouer':self.j.getNombreDeviner(),'niveau':self.g.getNiveau(),'essai':self.j.getEssai()+1,'randomOrdi':nombreRandom})
-            if(self.j.getNombreDeviner() == nombreRandom):
-                if(self.j.getEssai() == 0):
-                    return [2*self.j.getMise(),1]
-                if(self.j.getEssai() == 1):
-                    return [self.j.getMise()/2,2]
-                if(self.j.getEssai() > 1):
-                    return [-self.j.getMise(),3]
-            if(self.j.getNombreDeviner() > nombreRandom):
-                print('Votre nbre est trop grand !')
-                self.j.setEssai(self.j.getEssai()+1)
-            if(self.j.getNombreDeviner() < nombreRandom):
-                print('Votre nbre est trop petit !')
-                self.j.setEssai(self.j.getEssai()+1)
-            if(self.j.getEssai() == self.g.essai - 1):
-                print('Il vous reste une chance !')
-            if(self.j.getEssai() == self.g.essai):
-                print('Vous avez perdu ! Mon nombre est "',nombreRandom,'" !')
-                return [-self.j.getMise(),self.j.getEssai()]
+            
+            if not(t1.stopped()):
+                self.api.post({'name':self.j.name,'valeurJouer':self.j.getNombreDeviner(),'niveau':self.g.getNiveau(),'essai':self.j.getEssai()+1,'randomOrdi':nombreRandom})
+                if(self.j.getNombreDeviner() == nombreRandom):
+                    if(self.j.getEssai() == 0):
+                        t1.stop() 
+                        return [2*self.j.getMise(),1]
+                    if(self.j.getEssai() == 1):
+                        t1.stop() 
+                        return [self.j.getMise()/2,2]
+                    if(self.j.getEssai() > 1):
+                        t1.stop() 
+                        return [-self.j.getMise(),3]
+                if(self.j.getNombreDeviner() > nombreRandom):
+                    print('Votre nbre est trop grand !')
+                    self.j.setEssai(self.j.getEssai()+1)
+                if(self.j.getNombreDeviner() < nombreRandom):
+                    print('Votre nbre est trop petit !')
+                    self.j.setEssai(self.j.getEssai()+1)
+                if(self.j.getEssai() == self.g.essai - 1):
+                    print('Il vous reste une chance !')
+                if(self.j.getEssai() == self.g.essai):
+                    print('Vous avez perdu ! Mon nombre est "',nombreRandom,'" !')
+                    t1.stop() 
+                    return [-self.j.getMise(),self.j.getEssai()]
+                t1.stop() 
 
 jeu = Jeu()

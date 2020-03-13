@@ -8,3 +8,8 @@ node serve.js
 pyhton Jeu.py
 ```
 
+
+# Ajouter module
+```
+pyhton -m pip install module-name
+```
