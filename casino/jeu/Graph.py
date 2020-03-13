@@ -45,7 +45,7 @@ class Graph:
             
             plt.subplot(3, 1, niveau)
             plt.plot(names, tab)
-            plt.ylabel('Niveau' + str(niveau))
+            plt.ylabel('Niveau ' + str(niveau))
             plt.xlabel('Valeur')
             plt.suptitle('Les valeurs les plus utilisées par niveau')
 

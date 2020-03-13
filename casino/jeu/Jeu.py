@@ -52,7 +52,12 @@ class Jeu:
                         ###
                         sys.exit()
                 if(self.j.getSold() <= 0):
-                    print('Votre solde est null') 
+                    print('Votre solde est null')
+                    ### graph fin
+                    self.graph.graphFin()
+                    self.graph.graphValMoy()
+                    ###
+
             
     def lancerPartie(self):
         nombreRandom = random.randint(1, self.g.rang)
