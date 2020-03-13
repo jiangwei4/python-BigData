@@ -29,6 +29,7 @@ class ThreadGame(threading.Thread):
             time.sleep(1)
             t -= 1
         self.perso.setEssai(self.perso.getEssai()+1)
+        self.stop()
         print('Vous avez dépassé le délai de 5 secondes" ! Vous perdez l\'essai courantet il vous reste "',self.perso.getEssai() - self.essai,'" essai(s) !')
 
    
