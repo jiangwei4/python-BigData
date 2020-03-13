@@ -24,30 +24,40 @@ class Perso:
     def getMise(self):
         return self.mise
 
+    def tryCatch(self, message):
+        while True:
+            try:
+                inputVal = int(input())
+                break
+            except ValueError:
+                print(message) 
+        return inputVal
+
     def setMise(self):
-        joueurMise = int(input())
+        message = 'Le montant saisi n\'est pas valide. Entrer SVP un montant entre 1 et '+str(self.sold)+' € :  ?'
+        joueurMise = self.tryCatch(message)
         while(type(joueurMise) != int or joueurMise < 1 or joueurMise > self.sold ):
-            print('Le montant saisi n\'est pas valide. Entrer SVP un montant entre 1 et ',self.sold,' € :  ?')
-            joueurMise = int(input())
+            print(message)
+            joueurMise = self.tryCatch(message)
         self.mise = joueurMise
 
     def getNombreDeviner(self):
         return self.nombre 
     
     def setNombreDeviner(self):
-        joueurDevineNombre = int(input())
+        message = 'Je ne comprends pas votre nombre. Entrez SVP un nombre entier :  ?'
+        joueurDevineNombre = self.tryCatch(message)
         while(type(joueurDevineNombre) != int or joueurDevineNombre < 0):
-            print('Je ne comprends pas votre nombre. Entrez SVP un nombre entier :  ?')
-            joueurDevineNombre = int(input())
+            print(message)
+            joueurDevineNombre = self.tryCatch(message)
         self.nombre = joueurDevineNombre
 
     def getContinuer(self):
         return self.continuer
 
     def setContinuer(self):
-        print('Souhaitez-vous continuer la partie (O/N) ?')
         joueurContinue = input()
         while( joueurContinue != "o" and joueurContinue != "n" ):
-            print('Je ne comprends pas votre réponse. Souhaitez-vous continuer la partie (O/N) ?')
+            print('Je ne comprends pas votre réponse. Souhaitez-vous continuer la partie (o/n) ?')
             joueurContinue = input()
         self.continuer = joueurContinue

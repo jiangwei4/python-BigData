@@ -31,6 +31,7 @@ class Jeu:
                 ###
                 if(resultat[1] < self.g.essai):
                         print('Bingo ', self.j.name, ', vous avez gagné en "',resultat[1],'" coup(s) et vous avez emporté "',resultat[0],'" € !')
+                        print('Souhaitez-vous continuer la partie (O/N) ?')
                         self.j.setContinuer()
                         if(self.j.getContinuer() == 'o'):
                             self.graph.getGraph(1)
