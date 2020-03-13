@@ -12,4 +12,4 @@ class Api:
 
     def get(self,data):
         response = requests.get(self.url, data = json.dumps(data), headers = self.headers)
-        return response
+        return response.text

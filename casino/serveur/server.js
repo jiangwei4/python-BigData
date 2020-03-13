@@ -10,15 +10,12 @@ const PORT = 8083
 try {
 	fs.statSync('./sync.json')
 	sync.initSync('sync.json')
-	if(sync.get('FILE') == undefined){
+	if(sync.get('FILE') == undefined)
 		sync.set('FILE',[])	
-		console.log('fuck 1')
-	}
 } 
 catch(e){
 	sync.initSync('sync.json')
 	sync.set('FILE',[])	
-	console.log('fuck 1')
 }
 
 
@@ -55,7 +52,7 @@ app.get('/',(request,response) => {
 			if(element.niveau = request.body.niveau)
 				tmp1.push(element)
 		})
-	response.send({'response':tmp1})
+	response.send(tmp1)
 })
 
 app.listen(PORT,() => {
