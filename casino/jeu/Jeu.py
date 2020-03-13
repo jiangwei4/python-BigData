@@ -21,6 +21,7 @@ class Jeu:
             print('Bravo vous avez réussi à finir le jeu') 
             ### graph fin
             self.graph.graphFin()
+            self.graph.graphValMoy()
             ###
             sys.exit()
         else:
@@ -47,6 +48,7 @@ class Jeu:
                         print('Au revoir ! Vous finissez la partie avec "',self.j.getSold(),'" €')
                         ### graph fin
                         self.graph.graphFin()
+                        self.graph.graphValMoy()
                         ###
                         sys.exit()
                 if(self.j.getSold() <= 0):
