@@ -6,7 +6,7 @@ class ListEnnemi:
         self.listE = []
         self.config = config
         self.lastEnnemiCreat = 0
-        self.listeBullet = listeB
+        self.listeBullet = listB
 
     def addElemListE(self,x,y):
         if self.lastEnnemiCreat + self.config.getApparition() < time.time_ns():
@@ -44,7 +44,7 @@ class ListEnnemi:
         self.listE = tmp
 
     def update():
-        
+        return True
 
 
     def IA():
