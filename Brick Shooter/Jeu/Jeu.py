@@ -5,6 +5,7 @@ from ThreadGame import ThreadGame
 from ListBullet import ListBullet
 from Config import Config
 from Ennemi import Ennemi
+from ListEnnemi import ListEnnemi
 
 class Jeu :
     
@@ -19,6 +20,7 @@ class Jeu :
         self.Vaisseau = Vaisseau(self.config)
         self.listBullet = ListBullet(self.config)
         self.ennemi = Ennemi(self.config)
+        self.listEnnemi = ListEnnemi(self.config,self.listBullet)
         self.run()
         
 
@@ -63,6 +65,10 @@ class Jeu :
                     quit()
                 
                 if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        pygame.quit()
+                        quit()
+
                     if event.key == pygame.K_UP:
                         ya_mvt = -vitesse
                         da = 1
@@ -106,8 +112,13 @@ class Jeu :
                         
             time.sleep(0.02)
             self._fenetre.fill(self.config.getBlue())
+            #self.position(self.loadImg("images/fond.png"),0,0)
             ###### ajout un enemey
-            self.position(self.loadImg(self.ennemi.getImg()),self.ennemi.getx(),self.ennemi.getx())
+            self.listEnnemi.addElemListE(self.Vaisseau.getx(),self.Vaisseau.gety())
+            for elem in self.listEnnemi.getListE():
+                self.position(self.loadImg(self.listEnnemi.getImgElemListE(elem)),self.listEnnemi.getxElemListE(elem),self.listEnnemi.getyElemListE(elem)) 
+
+            #self.position(self.loadImg(self.ennemi.getImg()),self.ennemi.getx(),self.ennemi.getx())
             #######
            
             if tir:

@@ -1,7 +1,7 @@
 class Config:
     def __init__(self):
         #couleur
-        self.surfaceW = 1400
+        self.surfaceW = 1920
         self.surfaceH = 1080
         self.blue = (113, 117, 227)
         self.white = (255,255,255)
@@ -27,6 +27,11 @@ class Config:
         #bullet
         self.mouvementSpeedBullet = 6
 
+        #ennemi
+        self.apparition = 4000000000
+
+    def getApparition(self):
+        return self.apparition
 
     def getMouvementSpeedBullet(self):
         return self.mouvementSpeedBullet
