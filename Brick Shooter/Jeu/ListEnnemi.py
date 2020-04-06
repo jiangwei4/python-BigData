@@ -45,15 +45,9 @@ class ListEnnemi:
                 tmp.append(elem)
         self.listE = tmp
 
-<<<<<<< HEAD
-    def update():
-        cpt = 0
-        for elem in self.listB:
-=======
     def update(self):
         cpt = 0
         for elem in self.listE:
->>>>>>> dee6b78816fa32be73618643f100073153ab7ec9
             cpt += 1
             da=0
             db=0
