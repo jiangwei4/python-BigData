@@ -14,17 +14,13 @@ class ListBullet:
         return elem.getImg()
 
     def addElemListB(self,x,y,direction,type):
-        #action possible ?
-        #if lastBulletCreat + lastBulletCreatRapidFire < time.time_ns():
-            #self.lastBulletCreat = time.time_ns()
-            bullet = Bullet(self.config)
-            bullet.setx(x)
-            bullet.sety(y)
-            bullet.setType(type)
-            bullet.setDirection(direction)
-            self.listB.append(bullet)
-            return time.time_ns()
-        #return lastBulletCreat
+        bullet = Bullet(self.config)
+        bullet.setx(x)
+        bullet.sety(y)
+        bullet.setType(type)
+        bullet.setDirection(direction)
+        self.listB.append(bullet)
+        return time.time_ns()
 
     def supprElemListB(self,elemp):
         tmp = []

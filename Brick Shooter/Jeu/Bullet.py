@@ -10,8 +10,10 @@ class Bullet:
         self.direction = 0 #0haut 2droite 4bas 6gauche
         self.type = 0 #couleur du tir
         self.direction
+        self.centre = [self.x+(self.larg/2),self.y+(self.haut/2)]
 
-
+    def getCentre(self):
+        return self.centre
 
     def setDirection(self, direction):
         self.direction = direction
@@ -24,12 +26,14 @@ class Bullet:
             self.x -= self.mouvementSpeed
         else :
             self.x += self.mouvementSpeed
+        self.centre = [self.x+(self.larg/2),self.y+(self.haut/2)]
 
     def mvty(self,y):
         if y == 'n':
             self.y -= self.mouvementSpeed
         else :
             self.y += self.mouvementSpeed
+        self.centre = [self.x+(self.larg/2),self.y+(self.haut/2)]
 
 
     def setx(self,x):
@@ -43,6 +47,9 @@ class Bullet:
 
     def gety(self):
         return self.y
+
+    def getType(self):
+        return self.type
 
     def setType(self,type):
         self.type = type

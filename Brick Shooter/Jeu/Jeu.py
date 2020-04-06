@@ -52,7 +52,7 @@ class Jeu :
         #t1.setInformations(self.Vaisseau, self)
         #t1.start()
 
-        
+
         vitesse = self.Vaisseau.getMouvementSpeed()
         while True:
             
@@ -112,7 +112,8 @@ class Jeu :
             self._fenetre.fill(self.config.getBlue())
             #self.position(self.loadImg("images/fond.png"),0,0)
             ###### ajout un enemey
-            self.listEnnemi.addElemListE(self.Vaisseau.getx(),self.Vaisseau.gety())
+            self.listEnnemi.addElemListE()
+
             self.listEnnemi.update()
             for elem in self.listEnnemi.getListE():
                 self.position(self.loadImg(self.listEnnemi.getImgElemListE(elem)),self.listEnnemi.getxElemListE(elem),self.listEnnemi.getyElemListE(elem)) 
