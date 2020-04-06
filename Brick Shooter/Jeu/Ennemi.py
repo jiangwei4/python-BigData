@@ -1,7 +1,8 @@
 import time
+import os
 class Ennemi:
     def __init__(self,config,listBullet):
-        self.img = 'C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/ennemi'
+        self.img = 'ennemi'
         self.config = config
         self.larg = 40
         self.haut = 40
@@ -51,7 +52,7 @@ class Ennemi:
 
 
     def getImg(self):
-        return str(self.img)+str(self.direction)+'.png'
+        return os.path.join('images',self.img+str(self.direction)+'.png')
 
     def setx(self,x):
         if self.x+x > self.config.getMin() and self.x+x < self.config.getSurfaceW()-self.larg:

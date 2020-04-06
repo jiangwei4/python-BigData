@@ -1,15 +1,19 @@
 from Ennemi import Ennemi
 import time
 import random
+from Animation import Animation
 
 class ListEnnemi:
-    def __init__(self,config,listB,vaisseau, listeBullet):
+    def __init__(self,config,listB,vaisseau, listeBullet,jeu):
         self.listE = []
         self.config = config
         self.lastEnnemiCreat = 0
         self.listeBullet = listB
         self.vaisseau = vaisseau
         self.listeBullet = listeBullet
+        self.jeu = jeu
+        #self.animation = Animation(jeu)
+        
 
     def addElemListE(self):
         if self.lastEnnemiCreat + self.config.getApparition() < time.time_ns():
@@ -107,7 +111,13 @@ class ListEnnemi:
                         if(elemB.getCentre()[1]>elem.gety() and elemB.getCentre()[1]<(elem.gety()+elem.getHaut())):
                             #suppr bullet + ennemi
                             self.listeBullet.supprElemListB(elemB)
+                            #self.animation.explosion(elem.getx(),elem.gety())
+                            
+                            #t1.setInformations(self.Vaisseau, self)
+                            t1 = Animation(self.jeu,elem.getx(),elem.gety())
+                            t1.start()
                             self.supprElemListE(elem)
+
 
                 if(elemB.getType() == 1):
                     if(elemB.getCentre()[0]>self.vaisseau.getx() and elemB.getCentre()[0]<(self.vaisseau.getx()+self.vaisseau.getLarg())):

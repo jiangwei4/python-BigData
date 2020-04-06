@@ -78,10 +78,5 @@ class ListBullet:
             
             if  elem.getx() < self.config.getMin() or elem.getx() > self.config.getSurfaceW() or elem.gety() < self.config.getMin() or elem.gety() > self.config.getSurfaceH():
                 self.supprElemListB(elem)
-                
-            #si elem touche une cible 
-
-            
-            
-                
+                            
         #print(cpt)
