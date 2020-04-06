@@ -1,8 +1,8 @@
 class Config:
     def __init__(self):
         #couleur
-        self.surfaceW = 1920
-        self.surfaceH = 1080
+        self.surfaceW = 800
+        self.surfaceH = 600
         self.blue = (113, 117, 227)
         self.white = (255,255,255)
         self.min = 0
@@ -29,6 +29,14 @@ class Config:
 
         #ennemi
         self.apparition = 4000000000
+        self.mouvementSpeedEnnemi = 1
+        self.rapidFireEnnemi = 400000000 
+
+    def getRapidFireEnnemi(self):
+        return self.rapidFireEnnemi
+
+    def getMouvementSpeedEnnemi(self):
+        return self.mouvementSpeedEnnemi
 
     def getApparition(self):
         return self.apparition

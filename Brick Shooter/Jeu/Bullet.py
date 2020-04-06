@@ -10,7 +10,6 @@ class Bullet:
         self.direction = 0 #0haut 2droite 4bas 6gauche
         self.type = 0 #couleur du tir
         self.direction
-        self.damage = 0 #si 1 alors on prend des degats  sinon cest nos propres boules 
 
 
 

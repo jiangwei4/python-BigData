@@ -4,7 +4,6 @@ import time
 from ThreadGame import ThreadGame
 from ListBullet import ListBullet
 from Config import Config
-from Ennemi import Ennemi
 from ListEnnemi import ListEnnemi
 
 class Jeu :
@@ -16,11 +15,10 @@ class Jeu :
         self.config = Config()
       
         
-       
-        self.Vaisseau = Vaisseau(self.config)
         self.listBullet = ListBullet(self.config)
-        self.ennemi = Ennemi(self.config)
-        self.listEnnemi = ListEnnemi(self.config,self.listBullet)
+        self.Vaisseau = Vaisseau(self.config,self.listBullet)
+        
+        self.listEnnemi = ListEnnemi(self.config,self.listBullet, self.Vaisseau,self.listBullet)
         self.run()
         
 
@@ -115,14 +113,17 @@ class Jeu :
             #self.position(self.loadImg("images/fond.png"),0,0)
             ###### ajout un enemey
             self.listEnnemi.addElemListE(self.Vaisseau.getx(),self.Vaisseau.gety())
+            self.listEnnemi.update()
             for elem in self.listEnnemi.getListE():
                 self.position(self.loadImg(self.listEnnemi.getImgElemListE(elem)),self.listEnnemi.getxElemListE(elem),self.listEnnemi.getyElemListE(elem)) 
+
 
             #self.position(self.loadImg(self.ennemi.getImg()),self.ennemi.getx(),self.ennemi.getx())
             #######
            
             if tir:
-                self.listBullet.addElemListB(self.Vaisseau.getZoneTir()[0],self.Vaisseau.getZoneTir()[1],self.Vaisseau.getDirection())
+                #self.listBullet.addElemListB(self.Vaisseau.getZoneTir()[0],self.Vaisseau.getZoneTir()[1],self.Vaisseau.getDirection(),0)
+                self.Vaisseau.tirer()
 
             self.listBullet.update()
             for elem in self.listBullet.getListB():
