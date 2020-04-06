@@ -28,9 +28,9 @@ class Config:
         self.mouvementSpeedBullet = 6
 
         #ennemi
-        self.apparition = 4000000000
+        self.apparition = 1000000000
         self.mouvementSpeedEnnemi = 1
-        self.rapidFireEnnemi = 400000000 
+        self.rapidFireEnnemi = 800000000 
 
     def getRapidFireEnnemi(self):
         return self.rapidFireEnnemi

@@ -23,6 +23,12 @@ class Vaisseau:
         self.zoneTirx = 0
         self.zoneTiry = 0
 
+    def getLarg(self):
+        return self.larg
+
+    def getHaut(self):
+        return self.haut
+
     def getZoneTir(self):
         return [self.zoneTirx,self.zoneTiry]
 
@@ -88,6 +94,7 @@ class Vaisseau:
     def tirer(self):
         if self.lastBulletCreat + self.config.getRapidFire() < time.time_ns():
             self.lastBulletCreat = self.listBullet.addElemListB(self.zoneTirx,self.zoneTiry,self.direction,self.type)
+
 
 
     

@@ -77,14 +77,25 @@ class ListEnnemi:
             #tirer
             elem.tirer()
 
+            for elemB in self.listeBullet.getListB():
+                if(elemB.getType() == 0):
+                    if(elemB.getCentre()[0]>elem.getx() and elemB.getCentre()[0]<(elem.getx()+elem.getLarg())):
+                        if(elemB.getCentre()[1]>elem.gety() and elemB.getCentre()[1]<(elem.gety()+elem.getHaut())):
+                            #suppr bullet + ennemi
+                            self.listeBullet.supprElemListB(elemB)
+                            self.supprElemListE(elem)
+
+                if(elemB.getType() == 1):
+                    if(elemB.getCentre()[0]>self.vaisseau.getx() and elemB.getCentre()[0]<(self.vaisseau.getx()+self.vaisseau.getLarg())):
+                        if(elemB.getCentre()[1]>self.vaisseau.gety() and elemB.getCentre()[1]<(self.vaisseau.gety()+self.vaisseau.getHaut())):
+                            print("ouille")
+                            self.listeBullet.supprElemListB(elemB)
+
+
+
             #suppr si vie ==0
             if  elem.getLife() <= 0:
                 self.supprElemListE(elem)
 
-            
+        
 
-            
-
-
-    def IA():
-        return True

@@ -17,6 +17,12 @@ class Ennemi:
         self.zoneTirx = 0
         self.zoneTiry = 0
 
+    def getLarg(self):
+        return self.larg
+
+    def getHaut(self):
+        return self.haut
+
     def getZoneTir(self):
         return [self.zoneTirx,self.zoneTiry]
 
@@ -94,7 +100,7 @@ class Ennemi:
             
 
         if self.direction == 6:
-            self.x += self.mouvementSpeed
+            self.x -= self.mouvementSpeed
 
         if self.direction == 7:
             self.x -= self.mouvementSpeed
