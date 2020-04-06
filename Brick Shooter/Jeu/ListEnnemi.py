@@ -44,7 +44,7 @@ class ListEnnemi:
         self.listE = tmp
 
     def update():
-         cpt = 0
+        cpt = 0
         for elem in self.listB:
             cpt += 1
 

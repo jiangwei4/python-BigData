@@ -1,6 +1,6 @@
 class Ennemi:
     def __init__(self,config):
-        self.img = 'images/ennemi'
+        self.img = 'C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/ennemi'
         self.config = config
         self.larg = 40
         self.haut = 40

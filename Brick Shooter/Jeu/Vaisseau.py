@@ -1,7 +1,7 @@
 
 class Vaisseau:
     def __init__(self, config):
-        self.img = 'images/vaisseau'
+        self.img = 'C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/vaisseau'
         self.config = config
         self.x=self.config.getSurfaceW()/2-40
         self.y=self.config.getSurfaceH()-40
