@@ -6,6 +6,7 @@ from ListBullet import ListBullet
 from Config import Config
 from ListEnnemi import ListEnnemi
 
+
 class Jeu :
     
     def __init__(self, jeu, *groupes) :
@@ -13,12 +14,12 @@ class Jeu :
         #jeu.fond = (0, 0, 0)
  
         self.config = Config()
-      
+        
         
         self.listBullet = ListBullet(self.config)
         self.Vaisseau = Vaisseau(self.config,self.listBullet)
         
-        self.listEnnemi = ListEnnemi(self.config,self.listBullet, self.Vaisseau,self.listBullet)
+        self.listEnnemi = ListEnnemi(self.config,self.listBullet, self.Vaisseau,self.listBullet,jeu)
         self.run()
         
 

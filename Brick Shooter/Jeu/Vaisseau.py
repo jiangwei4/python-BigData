@@ -1,9 +1,10 @@
 
 import time
+import os
 
 class Vaisseau:
     def __init__(self, config,listBullet):
-        self.img = 'images/vaisseau'
+        self.img = 'vaisseau'
         self.config = config
         self.x=self.config.getSurfaceW()/2-40
         self.y=self.config.getSurfaceH()-40
@@ -57,7 +58,7 @@ class Vaisseau:
 
 
     def getImg(self):
-        return str(self.img)+str(self.direction)+'.png'
+        return os.path.join('images',self.img+str(self.direction)+'.png')
 
     def setx(self,x):
         if self.x+x > self.config.getMin() and self.x+x < self.config.getSurfaceW()-self.larg:
