@@ -1,8 +1,8 @@
 class Config:
     def __init__(self):
         #couleur
-        self.surfaceW = 800
-        self.surfaceH = 600
+        self.surfaceW = 1920
+        self.surfaceH = 1080
         self.blue = (113, 117, 227)
         self.white = (255,255,255)
         self.min = 0

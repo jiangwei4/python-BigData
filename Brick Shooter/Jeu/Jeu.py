@@ -112,7 +112,7 @@ class Jeu :
             self._fenetre.fill(self.config.getBlue())
             #self.position(self.loadImg("images/fond.png"),0,0)
             ###### ajout un enemey
-            self.listEnnemi.addElemListE(self.Vaisseau.getx(),self.Vaisseau.gety())
+            self.listEnnemi.addElemListE()
 
             self.listEnnemi.update()
             for elem in self.listEnnemi.getListE():

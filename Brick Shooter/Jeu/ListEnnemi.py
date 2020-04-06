@@ -1,5 +1,6 @@
 from Ennemi import Ennemi
 import time
+import random
 
 class ListEnnemi:
     def __init__(self,config,listB,vaisseau, listeBullet):
@@ -10,10 +11,33 @@ class ListEnnemi:
         self.vaisseau = vaisseau
         self.listeBullet = listeBullet
 
-    def addElemListE(self,x,y):
+    def addElemListE(self):
         if self.lastEnnemiCreat + self.config.getApparition() < time.time_ns():
             self.lastEnnemiCreat = time.time_ns()
             ennemi = Ennemi(self.config,self.listeBullet)
+            #randomisation
+            x = 0
+            y = 0
+
+            rd = random.randint(0, 3)
+            rdH = random.randint(0,self.config.getSurfaceH())
+            rdL = random.randint(0,self.config.getSurfaceW())
+            if rd == 0:
+                x = random.randint(0,self.config.getSurfaceW())
+                y = 0
+
+            if rd == 1:
+                x = 0
+                y = random.randint(0,self.config.getSurfaceH())
+
+            if rd == 2:
+                x = random.randint(0,self.config.getSurfaceW())
+                y = self.config.getSurfaceW()
+
+            if rd == 3:
+                x = self.config.getSurfaceH()
+                y = random.randint(0,self.config.getSurfaceH())
+
             ennemi.setx(x)
             ennemi.sety(y)
             self.listE.append(ennemi)
