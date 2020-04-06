@@ -1,10 +1,15 @@
 
+import time
+
 class Vaisseau:
-    def __init__(self, config):
+    def __init__(self, config,listBullet):
         self.img = 'images/vaisseau'
         self.config = config
         self.x=self.config.getSurfaceW()/2-40
         self.y=self.config.getSurfaceH()-40
+        
+        self.lastBulletCreat = 0
+
         self.larg = 40
         self.haut = 40
         self.mouvementSpeed = self.config.getMouvementSpeed()
@@ -12,6 +17,8 @@ class Vaisseau:
         self.shield = self.config.getShield()
         self.speedshield = self.config.getSpeedShield()
         self.direction = 0 #0haut 2droite 4bas 6gauche
+        self.listBullet = listBullet
+        self.type = 0
 
         self.zoneTirx = 0
         self.zoneTiry = 0
@@ -77,6 +84,10 @@ class Vaisseau:
 
     def getSpeedShield(self):
         return self.speedshield
+
+    def tirer(self):
+        if self.lastBulletCreat + self.config.getRapidFire() < time.time_ns():
+            self.lastBulletCreat = self.listBullet.addElemListB(self.zoneTirx,self.zoneTiry,self.direction,self.type)
 
 
     

@@ -30,6 +30,10 @@ class Config:
         #ennemi
         self.apparition = 4000000000
         self.mouvementSpeedEnnemi = 1
+        self.rapidFireEnnemi = 400000000 
+
+    def getRapidFireEnnemi(self):
+        return self.rapidFireEnnemi
 
     def getMouvementSpeedEnnemi(self):
         return self.mouvementSpeedEnnemi
