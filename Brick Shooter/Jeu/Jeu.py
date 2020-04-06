@@ -4,7 +4,7 @@ import time
 from ListBullet import ListBullet
 from Config import Config
 from ListEnnemi import ListEnnemi
-
+from Sound import Sound
 
 class Jeu :
     
@@ -14,11 +14,12 @@ class Jeu :
  
         self.config = Config()
         
-        
+        self.sound = Sound(jeu)
         self.listBullet = ListBullet(self.config)
         self.Vaisseau = Vaisseau(self.config,self.listBullet)
         
-        self.listEnnemi = ListEnnemi(self.config,self.listBullet, self.Vaisseau,self.listBullet,jeu)
+        self.listEnnemi = ListEnnemi(self.config,self.listBullet, self.Vaisseau,self.listBullet,jeu,self.sound)
+
         self.run()
         
 
@@ -52,7 +53,7 @@ class Jeu :
         #t1.setInformations(self.Vaisseau, self)
         #t1.start()
 
-
+        self.sound.start()
         vitesse = self.Vaisseau.getMouvementSpeed()
         while True:
             

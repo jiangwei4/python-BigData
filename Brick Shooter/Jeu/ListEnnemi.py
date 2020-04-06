@@ -4,7 +4,7 @@ import random
 from Animation import Animation
 
 class ListEnnemi:
-    def __init__(self,config,listB,vaisseau, listeBullet,jeu):
+    def __init__(self,config,listB,vaisseau, listeBullet,jeu,sound):
         self.listE = []
         self.config = config
         self.lastEnnemiCreat = 0
@@ -12,6 +12,7 @@ class ListEnnemi:
         self.vaisseau = vaisseau
         self.listeBullet = listeBullet
         self.jeu = jeu
+        self.sound = sound
         #self.animation = Animation(jeu)
         
 
@@ -116,6 +117,7 @@ class ListEnnemi:
                             #t1.setInformations(self.Vaisseau, self)
                             t1 = Animation(self.jeu,elem.getx(),elem.gety())
                             t1.start()
+                            self.sound.explosion()
                             self.supprElemListE(elem)
 
 
