@@ -8,7 +8,6 @@ class Vaisseau:
         self.config = config
         self.x=self.config.getSurfaceW()/2-40
         self.y=self.config.getSurfaceH()-40
-        
         self.lastBulletCreat = 0
 
         self.larg = 40
@@ -17,6 +16,7 @@ class Vaisseau:
         self.life = self.config.getLife()
         self.shield = self.config.getShield()
         self.speedshield = self.config.getSpeedShield()
+        self.point = 0
         self.direction = 0 #0haut 2droite 4bas 6gauche
         self.listBullet = listBullet
         self.type = 0
@@ -96,6 +96,10 @@ class Vaisseau:
         if self.lastBulletCreat + self.config.getRapidFire() < time.time_ns():
             self.lastBulletCreat = self.listBullet.addElemListB(self.zoneTirx,self.zoneTiry,self.direction,self.type)
 
+    def setPoint(self,point):
+        self.point = point
 
+    def getPoint(self):
+        return self.point
 
     

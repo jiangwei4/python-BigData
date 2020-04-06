@@ -13,7 +13,6 @@ class ListEnnemi:
         self.listeBullet = listeBullet
         self.jeu = jeu
         self.sound = sound
-        #self.animation = Animation(jeu)
         
 
     def addElemListE(self):
@@ -117,6 +116,7 @@ class ListEnnemi:
                             #t1.setInformations(self.Vaisseau, self)
                             t1 = Animation(self.jeu,elem.getx(),elem.gety())
                             t1.start()
+                            self.vaisseau.setPoint(self.vaisseau.getPoint()+10)
                             self.sound.explosion()
                             self.supprElemListE(elem)
 
@@ -124,7 +124,7 @@ class ListEnnemi:
                 if(elemB.getType() == 1):
                     if(elemB.getCentre()[0]>self.vaisseau.getx() and elemB.getCentre()[0]<(self.vaisseau.getx()+self.vaisseau.getLarg())):
                         if(elemB.getCentre()[1]>self.vaisseau.gety() and elemB.getCentre()[1]<(self.vaisseau.gety()+self.vaisseau.getHaut())):
-                            print("ouille")
+                            self.vaisseau.setLife(self.vaisseau.getLife()-1)
                             self.listeBullet.supprElemListB(elemB)
 
 
