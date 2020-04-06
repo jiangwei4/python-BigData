@@ -44,7 +44,13 @@ class ListEnnemi:
         self.listE = tmp
 
     def update():
-        return True
+         cpt = 0
+        for elem in self.listB:
+            cpt += 1
+
+            #deplacement +tir
+
+            
 
 
     def IA():
