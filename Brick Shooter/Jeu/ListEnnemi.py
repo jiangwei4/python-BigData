@@ -27,20 +27,20 @@ class ListEnnemi:
             rdH = random.randint(0,self.config.getSurfaceH())
             rdL = random.randint(0,self.config.getSurfaceW())
             if rd == 0:
-                x = random.randint(0,self.config.getSurfaceW())
+                x = random.randint(0,self.config.getSurfaceW()-41)
                 y = 0
 
             if rd == 1:
                 x = 0
-                y = random.randint(0,self.config.getSurfaceH())
+                y = random.randint(0,self.config.getSurfaceH()-41)
 
             if rd == 2:
-                x = random.randint(0,self.config.getSurfaceW())
-                y = self.config.getSurfaceW()
+                x = random.randint(0,self.config.getSurfaceW()-41)
+                y = self.config.getSurfaceH()-41
 
             if rd == 3:
-                x = self.config.getSurfaceH()
-                y = random.randint(0,self.config.getSurfaceH())
+                x = self.config.getSurfaceW()-41
+                y = random.randint(0,self.config.getSurfaceH()-41)
 
             ennemi.setx(x)
             ennemi.sety(y)
