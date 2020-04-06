@@ -14,7 +14,7 @@ class Application :
  
         self.fond = self.config.getBlue()
  
-        self.fenetre = pygame.display.set_mode((self.config.getSurfaceW(),self.config.getSurfaceH()),pygame.FULLSCREEN)#pygame.display.set_mode((surfaceW,surfaceH))
+        self.fenetre = pygame.display.set_mode((self.config.getSurfaceW(),self.config.getSurfaceH()))#,pygame.FULLSCREEN)#pygame.display.set_mode((surfaceW,surfaceH))
         # Groupe de sprites utilisé pour l'affichage
         self.groupeGlobal = pygame.sprite.Group()
         self.statut = True

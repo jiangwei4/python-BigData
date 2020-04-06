@@ -4,7 +4,7 @@ class Ennemi:
         self.config = config
         self.larg = 40
         self.haut = 40
-        self.mouvementSpeed = 6
+        self.mouvementSpeed = self.config.getMouvementSpeedEnnemi()
         self.life = 1
         self.x=100
         self.y=150
@@ -66,3 +66,33 @@ class Ennemi:
     
     def setLife(self, life):
         self.life = life
+
+    def avance(self):
+        if self.direction == 0:
+            self.y += self.mouvementSpeed
+
+        if self.direction == 1:
+            self.y += self.mouvementSpeed
+            self.x -= self.mouvementSpeed
+
+        if self.direction == 2:
+            self.x -= self.mouvementSpeed
+        
+        if self.direction == 3:
+            self.x -= self.mouvementSpeed
+            self.y -= self.mouvementSpeed
+
+        if self.direction == 4:
+            self.y -= self.mouvementSpeed
+
+        if self.direction == 5:
+            self.y -= self.mouvementSpeed
+            self.x += self.mouvementSpeed
+            
+
+        if self.direction == 6:
+            self.x += self.mouvementSpeed
+
+        if self.direction == 7:
+            self.x += self.mouvementSpeed
+            self.y += self.mouvementSpeed
