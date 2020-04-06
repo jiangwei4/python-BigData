@@ -11,7 +11,9 @@ class ListEnnemi:
         self.listeBullet = listB
         self.vaisseau = vaisseau
         self.listeBullet = listeBullet
-        self.animation = Animation(jeu)
+        self.jeu = jeu
+        #self.animation = Animation(jeu)
+        
 
     def addElemListE(self):
         if self.lastEnnemiCreat + self.config.getApparition() < time.time_ns():
@@ -109,7 +111,11 @@ class ListEnnemi:
                         if(elemB.getCentre()[1]>elem.gety() and elemB.getCentre()[1]<(elem.gety()+elem.getHaut())):
                             #suppr bullet + ennemi
                             self.listeBullet.supprElemListB(elemB)
-                            self.animation.explosion(elem.getx(),elem.gety())
+                            #self.animation.explosion(elem.getx(),elem.gety())
+                            
+                            #t1.setInformations(self.Vaisseau, self)
+                            t1 = Animation(self.jeu,elem.getx(),elem.gety())
+                            t1.start()
                             self.supprElemListE(elem)
 
 

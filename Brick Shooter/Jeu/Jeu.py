@@ -1,7 +1,6 @@
 import pygame
 from Vaisseau import Vaisseau
 import time
-from ThreadGame import ThreadGame
 from ListBullet import ListBullet
 from Config import Config
 from ListEnnemi import ListEnnemi
