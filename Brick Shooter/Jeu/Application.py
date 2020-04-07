@@ -2,6 +2,7 @@ import pygame
 from Menu import Menu
 from Jeu import Jeu
 from Config import Config
+from Reglages import Reglages
 
 
 
@@ -54,6 +55,7 @@ class Application :
         self._initialiser()
     def reglages(self):
         self._initialiser()
+        self.ecran = Reglages(self)
 
 
     def quitter(self) :
