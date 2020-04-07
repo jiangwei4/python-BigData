@@ -23,6 +23,10 @@ class Vaisseau:
 
         self.zoneTirx = 0
         self.zoneTiry = 0
+        self.centre = [self.x+(self.larg/2),self.y+(self.haut/2)]
+
+    def getCentre(self):
+        return self.centre
 
     def getLarg(self):
         return self.larg
@@ -54,6 +58,7 @@ class Vaisseau:
         zoneTir = self.config.getZoneTirPossible()[self.direction]
         self.zoneTirx = zoneTir[0]+self.x
         self.zoneTiry = zoneTir[1]+self.y
+        self.centre = [self.x+(self.larg/2),self.y+(self.haut/2)]
 
 
 

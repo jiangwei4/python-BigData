@@ -14,9 +14,13 @@ class Ennemi:
         self.direction = 0 #0haut 2droite 4bas 6gauche
         self.type=1
         self.lastBulletCreat = 0
+        self.centre = [self.x+(self.larg/2),self.y+(self.haut/2)]
 
         self.zoneTirx = 0
         self.zoneTiry = 0
+
+    def getCentre(self):
+        return self.centre
 
     def getLarg(self):
         return self.larg
@@ -106,6 +110,8 @@ class Ennemi:
         if self.direction == 7:
             self.x -= self.mouvementSpeed
             self.y -= self.mouvementSpeed
+            
+        self.centre = [self.x+(self.larg/2),self.y+(self.haut/2)]
 
 
     def tirer(self):

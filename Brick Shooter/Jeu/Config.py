@@ -32,6 +32,12 @@ class Config:
         self.mouvementSpeedEnnemi = 1
         self.rapidFireEnnemi = 1000000000 
 
+        #meteorite
+        self.apparitionMeteorite = 7000000000
+
+    def getApparitionMeteorite(self):
+        return self.apparitionMeteorite
+
     def getRapidFireEnnemi(self):
         return self.rapidFireEnnemi
 
