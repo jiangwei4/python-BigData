@@ -4,7 +4,8 @@ import time
 from ListBullet import ListBullet
 from Config import Config
 from ListEnnemi import ListEnnemi
-
+from Sound import Sound
+from Hud import Hud
 
 class Jeu :
     
@@ -14,11 +15,13 @@ class Jeu :
  
         self.config = Config()
         
-        
+        self.sound = Sound(jeu)
         self.listBullet = ListBullet(self.config)
         self.Vaisseau = Vaisseau(self.config,self.listBullet)
+        self.hud = Hud(jeu,self.Vaisseau)
         
-        self.listEnnemi = ListEnnemi(self.config,self.listBullet, self.Vaisseau,self.listBullet,jeu)
+        self.listEnnemi = ListEnnemi(self.config,self.listBullet, self.Vaisseau,self.listBullet,jeu,self.sound)
+
         self.run()
         
 
@@ -52,7 +55,7 @@ class Jeu :
         #t1.setInformations(self.Vaisseau, self)
         #t1.start()
 
-
+        self.sound.start()
         vitesse = self.Vaisseau.getMouvementSpeed()
         while True:
             
@@ -135,4 +138,5 @@ class Jeu :
            
             self.Vaisseau.sety(ya_mvt+yb_mvt)
             self.position(self.loadImg(self.Vaisseau.getImg()),self.Vaisseau.getx(),self.Vaisseau.gety())
+            self.hud.hud()
             self.update()

@@ -8,8 +8,8 @@ class Ennemi:
         self.haut = 40
         self.mouvementSpeed = self.config.getMouvementSpeedEnnemi()
         self.life = 1
-        self.x=100
-        self.y=150
+        self.x=0
+        self.y=0
         self.listBullet = listBullet
         self.direction = 0 #0haut 2droite 4bas 6gauche
         self.type=1

@@ -4,7 +4,7 @@ import random
 from Animation import Animation
 
 class ListEnnemi:
-    def __init__(self,config,listB,vaisseau, listeBullet,jeu):
+    def __init__(self,config,listB,vaisseau, listeBullet,jeu,sound):
         self.listE = []
         self.config = config
         self.lastEnnemiCreat = 0
@@ -12,7 +12,7 @@ class ListEnnemi:
         self.vaisseau = vaisseau
         self.listeBullet = listeBullet
         self.jeu = jeu
-        #self.animation = Animation(jeu)
+        self.sound = sound
         
 
     def addElemListE(self):
@@ -27,20 +27,20 @@ class ListEnnemi:
             rdH = random.randint(0,self.config.getSurfaceH())
             rdL = random.randint(0,self.config.getSurfaceW())
             if rd == 0:
-                x = random.randint(0,self.config.getSurfaceW())
+                x = random.randint(0,self.config.getSurfaceW()-41)
                 y = 0
 
             if rd == 1:
                 x = 0
-                y = random.randint(0,self.config.getSurfaceH())
+                y = random.randint(0,self.config.getSurfaceH()-41)
 
             if rd == 2:
-                x = random.randint(0,self.config.getSurfaceW())
-                y = self.config.getSurfaceW()
+                x = random.randint(0,self.config.getSurfaceW()-41)
+                y = self.config.getSurfaceH()-41
 
             if rd == 3:
-                x = self.config.getSurfaceH()
-                y = random.randint(0,self.config.getSurfaceH())
+                x = self.config.getSurfaceW()-41
+                y = random.randint(0,self.config.getSurfaceH()-41)
 
             ennemi.setx(x)
             ennemi.sety(y)
@@ -116,13 +116,15 @@ class ListEnnemi:
                             #t1.setInformations(self.Vaisseau, self)
                             t1 = Animation(self.jeu,elem.getx(),elem.gety())
                             t1.start()
+                            self.vaisseau.setPoint(self.vaisseau.getPoint()+10)
+                            self.sound.explosion()
                             self.supprElemListE(elem)
 
 
                 if(elemB.getType() == 1):
                     if(elemB.getCentre()[0]>self.vaisseau.getx() and elemB.getCentre()[0]<(self.vaisseau.getx()+self.vaisseau.getLarg())):
                         if(elemB.getCentre()[1]>self.vaisseau.gety() and elemB.getCentre()[1]<(self.vaisseau.gety()+self.vaisseau.getHaut())):
-                            print("ouille")
+                            self.vaisseau.setLife(self.vaisseau.getLife()-1)
                             self.listeBullet.supprElemListB(elemB)
 
 
