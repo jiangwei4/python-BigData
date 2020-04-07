@@ -16,8 +16,11 @@ class Reglages:
         font = pygame.font.SysFont('Helvetica', 24, bold=True)
         
         # noms des menus et commandes associées
+        keys = [
+            [self.config.getKeyString(self.config.getFireKey()), self.comd],
+        ]
         items = (
-            ('BOUTON TIR', self.changeKey),
+            ('BOUTON TIR', self.changeKey(keys)),
         )
         x = 200
         y = 180
@@ -38,18 +41,35 @@ class Reglages:
             for groupe in groupes :
                 groupe.add(mb)
 
+        x = 800
+        y = 180
+        self._keys = []
+        for key in keys :
+            mb = MenuBouton(
+                key[0],
+                self.couleurs['normal'],
+                font,
+                x,
+                y,
+                300,
+                50,
+                key[1]
+            )
+            self._keys.append(mb)
+            y += 120
+            for groupe in groupes :
+                groupe.add(mb)
 
-    def changeKey(self):
+
+    def changeKey(self, keys):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    pygame.quit()
-                    quit()
-                
-            
+                print(event.key)
+                key[0] = [config.getKeyString(event.key), key[0][1]]
+                self.config.setFireKey(event.key)
 
-
-        self.getKey = False
+    def comd(self):
+        return True
 
  
     def update(self, events) :

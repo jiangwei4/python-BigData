@@ -106,5 +106,11 @@ class Config:
     def getCouleurButton(self):
         return self.couleurButton
 
+    def getKeyString(self, key):
+        return pygame.key.name(key)
+
     def getFireKey(self):
         return self.fireKey
+    
+    def setFireKey(self, key):
+        self.fireKey = key

@@ -25,3 +25,6 @@ class MenuBouton(pygame.sprite.Sprite) :
     def executerCommande(self) :
         # Appel de la commande du bouton
         self._commande()
+    
+    def changeTexte(self, texte):
+        self.texte = font.render(texte, True, (0, 0, 0))
