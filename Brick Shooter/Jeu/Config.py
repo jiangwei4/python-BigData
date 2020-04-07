@@ -37,6 +37,12 @@ class Config:
         #keyboard
         self.fireKey = pygame.K_a
 
+        #meteorite
+        self.apparitionMeteorite = 7000000000
+
+    def getApparitionMeteorite(self):
+        return self.apparitionMeteorite
+
     def getRapidFireEnnemi(self):
         return self.rapidFireEnnemi
 

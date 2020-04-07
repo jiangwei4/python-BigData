@@ -6,6 +6,7 @@ from Config import Config
 from ListEnnemi import ListEnnemi
 from Sound import Sound
 from Hud import Hud
+from ListMeteorite import ListMeteorite
 
 class Jeu :
     
@@ -21,7 +22,7 @@ class Jeu :
         self.hud = Hud(jeu,self.Vaisseau)
         
         self.listEnnemi = ListEnnemi(self.config,self.listBullet, self.Vaisseau,self.listBullet,jeu,self.sound)
-
+        self.listMeteorite = ListMeteorite(self.config,self.listBullet,self.listEnnemi,self.sound,jeu,self.Vaisseau)
         self.run()
         
 
@@ -121,12 +122,18 @@ class Jeu :
             for elem in self.listEnnemi.getListE():
                 self.position(self.loadImg(self.listEnnemi.getImgElemListE(elem)),self.listEnnemi.getxElemListE(elem),self.listEnnemi.getyElemListE(elem)) 
 
+            #######
 
-            #self.position(self.loadImg(self.ennemi.getImg()),self.ennemi.getx(),self.ennemi.getx())
+            ###### ajout un meteorite
+            self.listMeteorite.addElemListM()
+
+            self.listMeteorite.update()
+            for elem in self.listMeteorite.getListM():
+                self.position(self.loadImg(self.listMeteorite.getImgElemListM(elem)),self.listMeteorite.getxElemListM(elem),self.listMeteorite.getyElemListM(elem)) 
+
             #######
            
             if tir:
-                #self.listBullet.addElemListB(self.Vaisseau.getZoneTir()[0],self.Vaisseau.getZoneTir()[1],self.Vaisseau.getDirection(),0)
                 self.Vaisseau.tirer()
 
             self.listBullet.update()

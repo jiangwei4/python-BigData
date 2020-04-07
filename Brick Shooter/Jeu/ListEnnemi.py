@@ -4,13 +4,12 @@ import random
 from Animation import Animation
 
 class ListEnnemi:
-    def __init__(self,config,listB,vaisseau, listeBullet,jeu,sound):
+    def __init__(self,config,listB,vaisseau, listBullet,jeu,sound):
         self.listE = []
         self.config = config
         self.lastEnnemiCreat = 0
-        self.listeBullet = listB
         self.vaisseau = vaisseau
-        self.listeBullet = listeBullet
+        self.listBullet = listBullet
         self.jeu = jeu
         self.sound = sound
         
@@ -18,7 +17,7 @@ class ListEnnemi:
     def addElemListE(self):
         if self.lastEnnemiCreat + self.config.getApparition() < time.time_ns():
             self.lastEnnemiCreat = time.time_ns()
-            ennemi = Ennemi(self.config,self.listeBullet)
+            ennemi = Ennemi(self.config,self.listBullet)
             #randomisation
             x = 0
             y = 0
@@ -27,20 +26,20 @@ class ListEnnemi:
             rdH = random.randint(0,self.config.getSurfaceH())
             rdL = random.randint(0,self.config.getSurfaceW())
             if rd == 0:
-                x = random.randint(0,self.config.getSurfaceW()-41)
+                x = random.randint(0,self.config.getSurfaceW()-(ennemi.getHaut()+1))
                 y = 0
 
             if rd == 1:
                 x = 0
-                y = random.randint(0,self.config.getSurfaceH()-41)
+                y = random.randint(0,self.config.getSurfaceH()-(ennemi.getHaut()+1))
 
             if rd == 2:
-                x = random.randint(0,self.config.getSurfaceW()-41)
-                y = self.config.getSurfaceH()-41
+                x = random.randint(0,self.config.getSurfaceW()-(ennemi.getLarg()+1))
+                y = self.config.getSurfaceH()-(ennemi.getHaut()+1)
 
             if rd == 3:
-                x = self.config.getSurfaceW()-41
-                y = random.randint(0,self.config.getSurfaceH()-41)
+                x = self.config.getSurfaceW()-(ennemi.getLarg()+1)
+                y = random.randint(0,self.config.getSurfaceH()-(ennemi.getHaut()+1))
 
             ennemi.setx(x)
             ennemi.sety(y)
@@ -105,15 +104,13 @@ class ListEnnemi:
             #tirer
             elem.tirer()
 
-            for elemB in self.listeBullet.getListB():
+            for elemB in self.listBullet.getListB():
                 if(elemB.getType() == 0):
                     if(elemB.getCentre()[0]>elem.getx() and elemB.getCentre()[0]<(elem.getx()+elem.getLarg())):
                         if(elemB.getCentre()[1]>elem.gety() and elemB.getCentre()[1]<(elem.gety()+elem.getHaut())):
-                            #suppr bullet + ennemi
-                            self.listeBullet.supprElemListB(elemB)
-                            #self.animation.explosion(elem.getx(),elem.gety())
-                            
-                            #t1.setInformations(self.Vaisseau, self)
+                            #suppr bullet + ennemi + explosion
+                            self.listBullet.supprElemListB(elemB)
+
                             t1 = Animation(self.jeu,elem.getx(),elem.gety())
                             t1.start()
                             self.vaisseau.setPoint(self.vaisseau.getPoint()+10)
@@ -125,7 +122,7 @@ class ListEnnemi:
                     if(elemB.getCentre()[0]>self.vaisseau.getx() and elemB.getCentre()[0]<(self.vaisseau.getx()+self.vaisseau.getLarg())):
                         if(elemB.getCentre()[1]>self.vaisseau.gety() and elemB.getCentre()[1]<(self.vaisseau.gety()+self.vaisseau.getHaut())):
                             self.vaisseau.setLife(self.vaisseau.getLife()-1)
-                            self.listeBullet.supprElemListB(elemB)
+                            self.listBullet.supprElemListB(elemB)
 
 
 
