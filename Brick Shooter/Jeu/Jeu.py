@@ -89,7 +89,7 @@ class Jeu :
                         dd = 1
                        
 
-                    if event.key == pygame.K_a:
+                    if event.key == self.config.getFireKey():
                         tir = True
                         
 
@@ -107,7 +107,7 @@ class Jeu :
                         xb_mvt = 0
                         dd = 0
 
-                    if event.key == pygame.K_a:
+                    if event.key == self.config.getFireKey():
                         tir = False
 
                         

@@ -2,7 +2,7 @@ import os
 class Bullet:
     def __init__(self,config):
         self.config = config
-        self.img = 'bullet'
+        self.img = 'C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/bullet'
         self.x=0
         self.y=0
         self.larg = 11
@@ -56,4 +56,4 @@ class Bullet:
         self.type = type
 
     def getImg(self):
-        return os.path.join('images',self.img+str(self.type)+'.png')
+        return os.path.join('C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images',self.img+str(self.type)+'.png')

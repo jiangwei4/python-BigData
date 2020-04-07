@@ -1,3 +1,5 @@
+import pygame
+
 class Config:
     def __init__(self):
         #couleur
@@ -30,7 +32,10 @@ class Config:
         #ennemi
         self.apparition = 3000000000
         self.mouvementSpeedEnnemi = 1
-        self.rapidFireEnnemi = 1000000000 
+        self.rapidFireEnnemi = 1000000000
+
+        #keyboard
+        self.fireKey = pygame.K_a
 
     def getRapidFireEnnemi(self):
         return self.rapidFireEnnemi
@@ -100,3 +105,6 @@ class Config:
 
     def getCouleurButton(self):
         return self.couleurButton
+
+    def getFireKey(self):
+        return self.fireKey
