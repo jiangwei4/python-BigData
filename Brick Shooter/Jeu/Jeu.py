@@ -14,11 +14,11 @@ from Ennemi import Ennemi
 
 class Jeu :
     
-    def __init__(self, jeu, *groupes) :
+    def __init__(self, jeu, config, *groupes) :
         self._fenetre = jeu.fenetre
         #jeu.fond = (0, 0, 0)
  
-        self.config = Config()
+        self.config = config
         
         self.sound = Sound(jeu)
         self.listBullet = ListBullet(self.config)

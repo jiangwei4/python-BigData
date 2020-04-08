@@ -1,15 +1,14 @@
 import pygame
-from Config import Config
 from MenuBouton import MenuBouton
+from BlocTexte import BlocTexte
 from Jeu import Jeu
 
 class Reglages:
-    def __init__(self, reglages, config, application, *groupes):
+    def __init__(self, reglages, config, app, *groupes):
         self.config = config
-        self._fenetre = reglages.fenetre
+        self.app = app
         self.listenToKey = False
         self.fireKey = self.config.getFireKey()
-        self.app = application
         
         self.couleurs = dict(
             normal=self.config.getCouleurButton(),
@@ -44,13 +43,24 @@ class Reglages:
             y += 120
             for groupe in groupes :
                 groupe.add(mb)
-        
-            
+           
         x = 800
         y = 180
+        self._keys = []
         for key in self.keys :
+            bt = BlocTexte(
+                key["value"],
+                self.couleurs['normal'],
+                font,
+                x,
+                y,
+                300,
+                50
+            )
+            self._keys.append(bt)
             y += 120
-
+            for groupe in groupes :
+                groupe.add(bt)
 
     def changeKey(self):
         while self.listenToKey:
@@ -71,6 +81,7 @@ class Reglages:
 
     def updateKey(self, key):
         self.keys[0]["value"] = self.getKeyString(key)
+        self._keys[0].changeTexte(self.getKeyString(key))
         print(self.config.getFireKey())
     
     def getKeyString(self, key):
@@ -102,3 +113,5 @@ class Reglages:
             # initialisation au pointeur par défaut
             pygame.mouse.set_cursor(*pygame.cursors.arrow)
  
+    def detruire(self) :
+        pygame.mouse.set_cursor(*pygame.cursors.arrow) # initialisation du pointeur

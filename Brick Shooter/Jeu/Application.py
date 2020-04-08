@@ -59,7 +59,6 @@ class Application :
         self._initialiser()
         self.ecran = Reglages(self, self.config, app, self.groupeGlobal)
 
-
     def quitter(self) :
         self.statut = False
  
