@@ -22,9 +22,10 @@ class Config:
         #vaisseau
         self.rapidFire = 400000000 
         self.mouvementSpeed = 4
-        self.life = 1
+        self.life = 4
         self.shield = 0
         self.speedshield = 1
+        self.invincible = 2
 
         #bullet
         self.mouvementSpeedBullet = 6
@@ -39,6 +40,9 @@ class Config:
 
         #meteorite
         self.apparitionMeteorite = 7000000000
+
+    def getInvincible(self):
+        return self.invincible
 
     def getApparitionMeteorite(self):
         return self.apparitionMeteorite

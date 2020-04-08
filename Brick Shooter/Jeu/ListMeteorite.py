@@ -135,6 +135,9 @@ class ListMeteorite:
             if(self.vaisseau.getCentre()[0]>elem.getx() and self.vaisseau.getCentre()[0]<(elem.getx()+elem.getLarg())):
                 if(self.vaisseau.getCentre()[1]>elem.gety() and self.vaisseau.getCentre()[1]<(elem.gety()+elem.getHaut())):
                     self.vaisseau.setLife(self.vaisseau.getLife()-1)
+                    if self.vaisseau.getLife() <= 0:
+                        t1 = Animation(self.jeu,self.vaisseau.getx(),self.vaisseau.gety())
+                        t1.start()
 
                     
                             

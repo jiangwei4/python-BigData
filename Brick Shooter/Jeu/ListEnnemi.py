@@ -123,12 +123,10 @@ class ListEnnemi:
                         if(elemB.getCentre()[1]>self.vaisseau.gety() and elemB.getCentre()[1]<(self.vaisseau.gety()+self.vaisseau.getHaut())):
                             self.vaisseau.setLife(self.vaisseau.getLife()-1)
                             self.listBullet.supprElemListB(elemB)
+                            if self.vaisseau.getLife() <= 0:
+                                t1 = Animation(self.jeu,self.vaisseau.getx(),self.vaisseau.gety())
+                                t1.start()
 
-
-
-            #suppr si vie ==0
-            if  elem.getLife() <= 0:
-                self.supprElemListE(elem)
 
         
 
