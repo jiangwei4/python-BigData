@@ -169,6 +169,9 @@ class Jeu :
            
             self.Vaisseau.sety(ya_mvt+yb_mvt)
             self.Vaisseau.update()
-            self.position(self.imgVaisseau[self.Vaisseau.getDirection()],self.Vaisseau.getx(),self.Vaisseau.gety())
+            if self.Vaisseau.getInvincible():
+                self.position(self.imgEnnemi[self.Vaisseau.getDirection()],self.Vaisseau.getx(),self.Vaisseau.gety())                
+            else :
+                self.position(self.imgVaisseau[self.Vaisseau.getDirection()],self.Vaisseau.getx(),self.Vaisseau.gety())
             self.hud.hud()
             self.update()

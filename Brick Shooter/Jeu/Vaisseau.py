@@ -28,6 +28,9 @@ class Vaisseau:
         self.zoneTiry = 0
         self.centre = [self.x+(self.larg/2),self.y+(self.haut/2)]
 
+    def getInvincible(self):
+        return self.invincible
+
     def getCentre(self):
         return self.centre
 
@@ -119,13 +122,6 @@ class Vaisseau:
     def update(self):
         if time.time() > self.lastTouch + self.config.getInvincible():
             self.invincible = False
-
-        if self.invincible == True:
-            #clignotement
-            self.img='ennemi'
-        else:
-            #fin du clignotement
-            self.img='vaisseau'
 
 
     
