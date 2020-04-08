@@ -19,7 +19,7 @@ class Jeu :
         self._fenetre = jeu.fenetre
         #jeu.fond = (0, 0, 0)
  
-        self.config = Config()
+        self.config = config
         self.jeu = jeu
         self.sound = Sound()#jeu)
         self.listBullet = ListBullet(self.config)
