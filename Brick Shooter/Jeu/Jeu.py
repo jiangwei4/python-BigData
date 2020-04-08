@@ -6,7 +6,11 @@ from Config import Config
 from ListEnnemi import ListEnnemi
 from Sound import Sound
 from Hud import Hud
+
 from ListMeteorite import ListMeteorite
+from Meteorite import Meteorite
+from Bullet import Bullet
+from Ennemi import Ennemi
 
 class Jeu :
     
@@ -23,6 +27,25 @@ class Jeu :
         
         self.listEnnemi = ListEnnemi(self.config,self.listBullet, self.Vaisseau,self.listBullet,jeu,self.sound)
         self.listMeteorite = ListMeteorite(self.config,self.listBullet,self.listEnnemi,self.sound,jeu,self.Vaisseau)
+
+
+        self.vaisseauInit = Vaisseau(self.config,[])
+        self.BulletInit = Bullet(self.config)
+        self.EnnemiInit = Ennemi(self.config,[])
+        self.MeteoriteInit = Meteorite(self.config)
+
+        self.imgMeteorite = self.loadImg(self.MeteoriteInit.getImg())
+        self.imgBullet = [self.loadImg(self.BulletInit.getImgType(0)),self.loadImg(self.BulletInit.getImgType(1))]
+        self.imgFond = self.loadImg("images/fond.png")
+
+        self.imgVaisseau = []
+        self.imgEnnemi = []
+        for i in range(8):
+            imgV = self.loadImg(self.vaisseauInit.getImgDirection(i))
+            imgE = self.loadImg(self.EnnemiInit.getImgDirection(i))
+            self.imgVaisseau.append(imgV)
+            self.imgEnnemi.append(imgE)
+
         self.run()
         
 
@@ -55,7 +78,6 @@ class Jeu :
 
         self.sound.start()
         vitesse = self.Vaisseau.getMouvementSpeed()
-        fond = self.loadImg("images/fond.png")
         while True:
             if self.Vaisseau.getLife()<=0:
                 ##game over 
@@ -115,13 +137,14 @@ class Jeu :
                         
             time.sleep(0.02)
             #self._fenetre.fill(self.config.getBlue())
-            self.position(fond,0,0)
+            self.position(self.imgFond,0,0)
             ###### ajout un enemey
             self.listEnnemi.addElemListE()
 
             self.listEnnemi.update()
             for elem in self.listEnnemi.getListE():
-                self.position(self.loadImg(self.listEnnemi.getImgElemListE(elem)),self.listEnnemi.getxElemListE(elem),self.listEnnemi.getyElemListE(elem)) 
+                self.position(self.imgEnnemi[elem.getDirection()],self.listEnnemi.getxElemListE(elem),self.listEnnemi.getyElemListE(elem))
+                #self.position(self.loadImg(self.listEnnemi.getImgElemListE(elem)),self.listEnnemi.getxElemListE(elem),self.listEnnemi.getyElemListE(elem)) 
 
             #######
 
@@ -130,7 +153,7 @@ class Jeu :
 
             self.listMeteorite.update()
             for elem in self.listMeteorite.getListM():
-                self.position(self.loadImg(self.listMeteorite.getImgElemListM(elem)),self.listMeteorite.getxElemListM(elem),self.listMeteorite.getyElemListM(elem)) 
+                self.position(self.imgMeteorite,self.listMeteorite.getxElemListM(elem),self.listMeteorite.getyElemListM(elem)) 
 
             #######
            
@@ -139,13 +162,13 @@ class Jeu :
 
             self.listBullet.update()
             for elem in self.listBullet.getListB():
-                self.position(self.loadImg(self.listBullet.getImgElemListB(elem)),self.listBullet.getxElemListB(elem),self.listBullet.getyElemListB(elem)) 
+                self.position(self.imgBullet[elem.getType()],self.listBullet.getxElemListB(elem),self.listBullet.getyElemListB(elem)) 
 
             self.Vaisseau.setDirection(da,db,dc,dd)
             self.Vaisseau.setx(xa_mvt+xb_mvt)
            
             self.Vaisseau.sety(ya_mvt+yb_mvt)
             self.Vaisseau.update()
-            self.position(self.loadImg(self.Vaisseau.getImg()),self.Vaisseau.getx(),self.Vaisseau.gety())
+            self.position(self.imgVaisseau[self.Vaisseau.getDirection()],self.Vaisseau.getx(),self.Vaisseau.gety())
             self.hud.hud()
             self.update()

@@ -57,3 +57,6 @@ class Bullet:
 
     def getImg(self):
         return os.path.join('images',self.img+str(self.type)+'.png')
+
+    def getImgType(self,type):
+        return os.path.join('images',self.img+str(type)+'.png')
