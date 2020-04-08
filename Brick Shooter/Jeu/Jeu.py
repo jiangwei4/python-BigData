@@ -58,7 +58,11 @@ class Jeu :
 
         self.sound.start()
         vitesse = self.Vaisseau.getMouvementSpeed()
+        fond = self.loadImg("images/fond.png")
         while True:
+            if self.Vaisseau.getLife()<=0:
+                ##game over retour menu
+                quit()
             
             for event in pygame.event.get():
               
@@ -113,8 +117,8 @@ class Jeu :
 
                         
             time.sleep(0.02)
-            self._fenetre.fill(self.config.getBlue())
-            #self.position(self.loadImg("images/fond.png"),0,0)
+            #self._fenetre.fill(self.config.getBlue())
+            self.position(fond,0,0)
             ###### ajout un enemey
             self.listEnnemi.addElemListE()
 

@@ -21,6 +21,8 @@ class Vaisseau:
         self.listBullet = listBullet
         self.type = 0
 
+        self.lastTouch = 0##en sec
+
         self.zoneTirx = 0
         self.zoneTiry = 0
         self.centre = [self.x+(self.larg/2),self.y+(self.haut/2)]
@@ -86,7 +88,11 @@ class Vaisseau:
         return self.life
     
     def setLife(self, life):
-        self.life = life
+        if time.time() > self.lastTouch + self.config.getInvincible():
+            self.life = life
+            self.lastTouch = time.time()
+            ##change image
+            #self.img = 'vaisseauI'
 
     def getShield(self):
         return self.shield
@@ -106,5 +112,10 @@ class Vaisseau:
 
     def getPoint(self):
         return self.point
+
+    def update(self):
+        if time.time() > self.lastTouch + self.config.getInvincible():
+            ##image origin
+            self.img =  'vaisseau'
 
     
