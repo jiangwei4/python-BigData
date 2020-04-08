@@ -9,6 +9,7 @@ class Vaisseau:
         self.x=self.config.getSurfaceW()/2-40
         self.y=self.config.getSurfaceH()-40
         self.lastBulletCreat = 0
+        self.invincible = False
 
         self.larg = 40
         self.haut = 40
@@ -91,8 +92,7 @@ class Vaisseau:
         if time.time() > self.lastTouch + self.config.getInvincible():
             self.life = life
             self.lastTouch = time.time()
-            ##change image
-            #self.img = 'vaisseauI'
+            self.invincible = True
 
     def getShield(self):
         return self.shield
@@ -115,7 +115,14 @@ class Vaisseau:
 
     def update(self):
         if time.time() > self.lastTouch + self.config.getInvincible():
-            ##image origin
-            self.img =  'vaisseau'
+            self.invincible = False
+
+        if self.invincible == True:
+            #clignotement
+            self.img='ennemi'
+        else:
+            #fin du clignotement
+            self.img='vaisseau'
+
 
     

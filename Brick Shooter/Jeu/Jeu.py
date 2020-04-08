@@ -145,6 +145,7 @@ class Jeu :
             self.Vaisseau.setx(xa_mvt+xb_mvt)
            
             self.Vaisseau.sety(ya_mvt+yb_mvt)
+            self.Vaisseau.update()
             self.position(self.loadImg(self.Vaisseau.getImg()),self.Vaisseau.getx(),self.Vaisseau.gety())
             self.hud.hud()
             self.update()
