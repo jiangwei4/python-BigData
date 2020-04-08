@@ -2,7 +2,7 @@ import time
 import os
 class Ennemi:
     def __init__(self,config,listBullet):
-        self.img = 'C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/ennemi'
+        self.img = 'ennemi'
         self.config = config
         self.larg = 40
         self.haut = 40
@@ -56,7 +56,7 @@ class Ennemi:
 
 
     def getImg(self):
-        return os.path.join('C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images',self.img+str(self.direction)+'.png')
+        return os.path.join('images',self.img+str(self.direction)+'.png')
 
     def getImgDirection(self,direction):
         return os.path.join('images',self.img+str(direction)+'.png')

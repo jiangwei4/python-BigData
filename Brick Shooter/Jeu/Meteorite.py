@@ -3,7 +3,7 @@ import random
 class Meteorite:
     def __init__(self,config):
         self.config = config
-        self.img = 'C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/meteorite'
+        self.img = 'meteorite'
         self.x=0
         self.y=0
         self.larg = 153
@@ -54,4 +54,4 @@ class Meteorite:
         return self.y
 
     def getImg(self):
-        return os.path.join('C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images',self.img+'.png')
+        return os.path.join('images',self.img+'.png')
