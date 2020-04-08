@@ -17,7 +17,7 @@ class Application :
         
  
         self.fenetre = pygame.display.set_mode((self.config.getSurfaceW(),self.config.getSurfaceH()),pygame.FULLSCREEN)#pygame.display.set_mode((surfaceW,surfaceH))
-        self.fenetre.blit(pygame.image.load("images/acceuil.jpg"),(0,0))
+        self.fenetre.blit(pygame.image.load("C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/acceuil.jpg"),(0,0))
         # Groupe de sprites utilisé pour l'affichage
         self.groupeGlobal = pygame.sprite.Group()
         self.statut = True
