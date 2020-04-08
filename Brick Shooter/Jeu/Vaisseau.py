@@ -10,6 +10,7 @@ class Vaisseau:
         self.y=self.config.getSurfaceH()-40
         self.lastBulletCreat = 0
         self.invincible = False
+        self.invincibleLancer = False
 
         self.larg = 40
         self.haut = 40
@@ -27,6 +28,12 @@ class Vaisseau:
         self.zoneTirx = 0
         self.zoneTiry = 0
         self.centre = [self.x+(self.larg/2),self.y+(self.haut/2)]
+
+    def getInvincibleLancer(self):
+        return self.invincibleLancer
+    
+    def setInvincibleLancer(self,bool):
+        self.invincibleLancer = bool
 
     def getInvincible(self):
         return self.invincible

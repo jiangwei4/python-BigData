@@ -117,7 +117,7 @@ class ListEnnemi:
                             self.sound.explosion()
                             self.supprElemListE(elem)
 
-
+                #nous
                 if(elemB.getType() == 1):
                     if(elemB.getCentre()[0]>self.vaisseau.getx() and elemB.getCentre()[0]<(self.vaisseau.getx()+self.vaisseau.getLarg())):
                         if(elemB.getCentre()[1]>self.vaisseau.gety() and elemB.getCentre()[1]<(self.vaisseau.gety()+self.vaisseau.getHaut())):
