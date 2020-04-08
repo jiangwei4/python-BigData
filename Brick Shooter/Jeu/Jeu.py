@@ -52,16 +52,13 @@ class Jeu :
         dd=0
         tir = False
         listsBullet = []
-        #t1 = ThreadGame() 
-        #t1.setInformations(self.Vaisseau, self)
-        #t1.start()
 
         self.sound.start()
         vitesse = self.Vaisseau.getMouvementSpeed()
         fond = self.loadImg("images/fond.png")
         while True:
             if self.Vaisseau.getLife()<=0:
-                ##game over retour menu
+                ##game over 
                 quit()
             
             for event in pygame.event.get():
@@ -128,7 +125,7 @@ class Jeu :
 
             #######
 
-            ###### ajout un meteorite
+            ###### ajout une meteorite
             self.listMeteorite.addElemListM()
 
             self.listMeteorite.update()

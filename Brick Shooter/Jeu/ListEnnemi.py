@@ -128,10 +128,5 @@ class ListEnnemi:
                                 t1.start()
 
 
-
-            #suppr si vie ==0
-            if  elem.getLife() <= 0:
-                self.supprElemListE(elem)
-
         
 
