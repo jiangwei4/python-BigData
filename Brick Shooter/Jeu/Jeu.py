@@ -6,6 +6,7 @@ from Config import Config
 from ListEnnemi import ListEnnemi
 from Sound import Sound
 from Hud import Hud
+from AnimationInvincible import AnimationInvincible
 
 from ListMeteorite import ListMeteorite
 from Meteorite import Meteorite
@@ -18,9 +19,9 @@ class Jeu :
         self._fenetre = jeu.fenetre
         #jeu.fond = (0, 0, 0)
  
-        self.config = config
-        
-        self.sound = Sound(jeu)
+        self.config = Config()
+        self.jeu = jeu
+        self.sound = Sound()#jeu)
         self.listBullet = ListBullet(self.config)
         self.Vaisseau = Vaisseau(self.config,self.listBullet)
         self.hud = Hud(jeu,self.Vaisseau)
@@ -170,7 +171,10 @@ class Jeu :
             self.Vaisseau.sety(ya_mvt+yb_mvt)
             self.Vaisseau.update()
             if self.Vaisseau.getInvincible():
-                self.position(self.imgEnnemi[self.Vaisseau.getDirection()],self.Vaisseau.getx(),self.Vaisseau.gety())                
+                if self.Vaisseau.getInvincibleLancer() == False:
+                    self.Vaisseau.setInvincibleLancer(True)
+                    t1 = AnimationInvincible(self.jeu,self.Vaisseau,self.config)
+                    t1.start()            
             else :
                 self.position(self.imgVaisseau[self.Vaisseau.getDirection()],self.Vaisseau.getx(),self.Vaisseau.gety())
             self.hud.hud()

@@ -4,6 +4,7 @@ from Jeu import Jeu
 from Config import Config
 from Reglages import Reglages
 
+from Sound import Sound
 
 
 class Application :
@@ -14,10 +15,13 @@ class Application :
         pygame.display.set_caption("ISN ILIES")
  
         self.fond = self.config.getBlue()
-        
+
  
         self.fenetre = pygame.display.set_mode((self.config.getSurfaceW(),self.config.getSurfaceH()),pygame.FULLSCREEN)#pygame.display.set_mode((surfaceW,surfaceH))
-        self.fenetre.blit(pygame.image.load("acceuil.jpg"),(0,0))
+        self.fenetre.blit(pygame.image.load("images/acceuil.jpg"),(0,0))
+
+        self.sound = Sound()
+        self.sound.inAcceuil()
         # Groupe de sprites utilisé pour l'affichage
         self.groupeGlobal = pygame.sprite.Group()
         self.statut = True

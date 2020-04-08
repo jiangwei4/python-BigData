@@ -1,18 +1,25 @@
 import pygame
 import time
 import threading 
+from Vaisseau import Vaisseau
 
 class AnimationInvincible(threading.Thread):
-    def __init__(self,Jeu,x,y,config, *args, **kwargs): 
-        super(Animation, self).__init__(*args, **kwargs) 
+    def __init__(self,Jeu,vaisseau,config, *args, **kwargs): 
+        super(AnimationInvincible, self).__init__(*args, **kwargs) 
         self._stop = threading.Event()
         self._fenetre = Jeu.fenetre
-        self.imgExplosion = "images/vaisseau"
+        self.vaisseau = vaisseau
         self.lastFrame = 0
         self.delai = 20
         self.config= config
-        self.x = x
-        self.y = y
+        self.x = self.vaisseau.getx()
+        self.y = self.vaisseau.gety()
+
+        self.vaisseauInit = Vaisseau(self.config,[])
+        self.imgVaisseau = []
+        for i in range(8):
+            imgV = self.loadImg(self.vaisseauInit.getImgDirection(i))
+            self.imgVaisseau.append(imgV)
 
     def stop(self): 
         self._stop.set() 
@@ -30,13 +37,16 @@ class AnimationInvincible(threading.Thread):
         while True:
             if self.stopped(): 
                 return
-            for i in range(self.config.getInvincible()*2):
-                t = time.time_ns()+50000000 #+0.5sec
-                while time.time_ns()-t < 0.5:
-                    if i % 1 == 0:
-                        self.position(self.loadImg(self.imgExplosion+str(i)+'.png'),self.x-30,self.y-30)
-                    else :
-                        #self.position(self.loadImg(self.imgExplosion+str(i)+'.png'),self.x-30,self.y-30)
+            t = time.time()
+            i = 0
+
+            while time.time()-t < self.config.getInvincible():
+                e = time.time_ns()
+                time.sleep(0.1)
+                while  e + 200000000 > time.time_ns():
+                    self.position(self.loadImg(self.vaisseau.getImgDirection(self.vaisseau.getDirection())),self.vaisseau.getx(),self.vaisseau.gety())
+
+            self.vaisseau.setInvincibleLancer(False)
             self.stop()
     
 

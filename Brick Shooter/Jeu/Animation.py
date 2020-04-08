@@ -29,7 +29,7 @@ class Animation(threading.Thread):
     def position(self,img,x,y):
         self._fenetre.blit(img,(x,y))
   
-    def run(self): 
+    def run(self):
         while True:
             if self.stopped(): 
                 return

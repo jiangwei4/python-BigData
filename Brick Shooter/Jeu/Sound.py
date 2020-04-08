@@ -1,8 +1,8 @@
 import os
 import pygame
 class Sound:
-    def __init__(self,Jeu):
-        self._fenetre = Jeu.fenetre
+    def __init__(self):#,Jeu):
+        #self._fenetre = Jeu.fenetre
         pygame.mixer.init(44100, -16, 2, 2048)
 
 
@@ -14,3 +14,6 @@ class Sound:
     def start(self):
         pygame.mixer.music.load(os.path.join('sons',"E1M1.mid"))
         pygame.mixer.music.play()
+
+    def inAcceuil(self):
+        return True
