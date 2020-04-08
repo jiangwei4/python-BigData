@@ -1,13 +1,15 @@
 import pygame
 from Config import Config
 from MenuBouton import MenuBouton
+from Jeu import Jeu
 
 class Reglages:
-    def __init__(self, reglages, *groupes):
+    def __init__(self, reglages, application, *groupes):
         self.config = Config()
         self._fenetre = reglages.fenetre
-        self.getKey = False
-        self.fireKey = pygame.K_a
+        self.listenToKey = False
+        self.fireKey = self.config.getFireKey()
+        self.app = application
         
         self.couleurs = dict(
             normal=self.config.getCouleurButton(),
@@ -16,12 +18,14 @@ class Reglages:
         font = pygame.font.SysFont('Helvetica', 24, bold=True)
         
         # noms des menus et commandes associées
-        keys = [
-            [self.config.getKeyString(self.config.getFireKey()), self.comd],
-        ]
+        
         items = (
-            ('BOUTON TIR', self.changeKey(keys)),
+            ('BOUTON TIR', self.updateListen),
+            ('JOUER', self.jouer),
         )
+        self.keys = [
+            {"name": "fireKey", "value": self.getKeyString(self.config.getFireKey())},
+        ]
         x = 200
         y = 180
         self._boutons = []
@@ -40,37 +44,40 @@ class Reglages:
             y += 120
             for groupe in groupes :
                 groupe.add(mb)
-
+        
+            
         x = 800
         y = 180
-        self._keys = []
-        for key in keys :
-            mb = MenuBouton(
-                key[0],
-                self.couleurs['normal'],
-                font,
-                x,
-                y,
-                300,
-                50,
-                key[1]
-            )
-            self._keys.append(mb)
+        for key in self.keys :
             y += 120
-            for groupe in groupes :
-                groupe.add(mb)
 
 
-    def changeKey(self, keys):
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                print(event.key)
-                key[0] = [config.getKeyString(event.key), key[0][1]]
-                self.config.setFireKey(event.key)
+    def changeKey(self):
+        while self.listenToKey:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        print("I quit")
+                        pygame.quit()
+                        quit()
+                    else:
+                        self.config.setFireKey(event.key)
+                        self.updateKey(event.key)
+                        self.listenToKey = False
+    
+    def updateListen(self):
+        self.listenToKey = True
+        self.changeKey()
 
-    def comd(self):
-        return True
-
+    def updateKey(self, key):
+        self.keys[0]["value"] = self.getKeyString(key)
+        print(self.config.getFireKey())
+    
+    def getKeyString(self, key):
+        return pygame.key.name(key)
+    
+    def jouer(self):
+        self.app.continuer()
  
     def update(self, events) :
         clicGauche, *_ = pygame.mouse.get_pressed()
@@ -95,5 +102,3 @@ class Reglages:
             # initialisation au pointeur par défaut
             pygame.mouse.set_cursor(*pygame.cursors.arrow)
  
-    def detruire(self) :
-        pygame.mouse.set_cursor(*pygame.cursors.arrow) # initialisation du pointeur

@@ -36,11 +36,11 @@ class Application :
     def jeu(self) :
         # Affichage du jeu
         self._initialiser()
-        self.ecran = Jeu(self, self.groupeGlobal)
+        self.ecran = Jeu(self, self.config, self.groupeGlobal)
  
     def continuer(self):
         self._initialiser()
-        self.ecran = Jeu(self, self.groupeGlobal)
+        self.ecran = Jeu(self, self.config, self.groupeGlobal)
 
     def nouvellePartie(self):
         self._initialiser()
@@ -55,7 +55,7 @@ class Application :
         self._initialiser()
     def reglages(self):
         self._initialiser()
-        self.ecran = Reglages(self, self.groupeGlobal)
+        self.ecran = Reglages(self, app, self.groupeGlobal)
 
 
     def quitter(self) :
