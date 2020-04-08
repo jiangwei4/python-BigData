@@ -7,7 +7,7 @@ class Animation(threading.Thread):
         super(Animation, self).__init__(*args, **kwargs) 
         self._stop = threading.Event()
         self._fenetre = Jeu.fenetre
-        self.imgExplosionPath = "images/explosion"
+        self.imgExplosionPath = "C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/explosion"
         self.lastFrame = 0
         self.delai = 20
         self.x = x

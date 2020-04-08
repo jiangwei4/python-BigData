@@ -4,8 +4,8 @@ from MenuBouton import MenuBouton
 from Jeu import Jeu
 
 class Reglages:
-    def __init__(self, reglages, application, *groupes):
-        self.config = Config()
+    def __init__(self, reglages, config, application, *groupes):
+        self.config = config
         self._fenetre = reglages.fenetre
         self.listenToKey = False
         self.fireKey = self.config.getFireKey()

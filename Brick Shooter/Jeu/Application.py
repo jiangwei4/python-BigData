@@ -57,7 +57,7 @@ class Application :
         self._initialiser()
     def reglages(self):
         self._initialiser()
-        self.ecran = Reglages(self, app, self.groupeGlobal)
+        self.ecran = Reglages(self, self.config, app, self.groupeGlobal)
 
 
     def quitter(self) :
