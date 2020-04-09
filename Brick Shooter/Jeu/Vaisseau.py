@@ -7,7 +7,7 @@ class Vaisseau:
         self.img = 'C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/vaisseau'
         self.config = config
         self.x=self.config.getSurfaceW()/2-40
-        self.y=self.config.getSurfaceH()-40
+        self.y=self.config.getSurfaceH()/2-40
         self.lastBulletCreat = 0
         self.invincible = False
         self.invincibleLancer = False
