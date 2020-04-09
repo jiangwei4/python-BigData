@@ -7,6 +7,7 @@ from ListEnnemi import ListEnnemi
 from Sound import Sound
 from Hud import Hud
 from AnimationInvincible import AnimationInvincible
+from GameOver import GameOver
 
 from ListMeteorite import ListMeteorite
 from Meteorite import Meteorite
@@ -25,6 +26,7 @@ class Jeu :
         self.listBullet = ListBullet(self.config)
         self.Vaisseau = Vaisseau(self.config,self.listBullet)
         self.hud = Hud(jeu,self.Vaisseau)
+        self.gameover = GameOver(self.jeu)
         
         self.listEnnemi = ListEnnemi(self.config,self.listBullet, self.Vaisseau,self.listBullet,jeu,self.sound)
         self.listMeteorite = ListMeteorite(self.config,self.listBullet,self.listEnnemi,self.sound,jeu,self.Vaisseau)
@@ -37,7 +39,7 @@ class Jeu :
 
         self.imgMeteorite = self.loadImg(self.MeteoriteInit.getImg())
         self.imgBullet = [self.loadImg(self.BulletInit.getImgType(0)),self.loadImg(self.BulletInit.getImgType(1))]
-        self.imgFond = self.loadImg("fond.png")
+        self.imgFond = self.loadImg("images/fond.png")
 
         self.imgVaisseau = []
         self.imgEnnemi = []
@@ -82,7 +84,9 @@ class Jeu :
         while True:
             if self.Vaisseau.getLife()<=0:
                 ##game over 
-                quit()
+                self.gameover.go()
+                return True
+                #quit()
             
             for event in pygame.event.get():
               

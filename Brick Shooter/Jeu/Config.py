@@ -22,7 +22,7 @@ class Config:
         #vaisseau
         self.rapidFire = 400000000 
         self.mouvementSpeed = 4
-        self.life = 4
+        self.life = 1
         self.shield = 0
         self.speedshield = 1
         self.invincible = 2

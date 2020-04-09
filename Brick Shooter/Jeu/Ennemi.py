@@ -56,10 +56,10 @@ class Ennemi:
 
 
     def getImg(self):
-        return os.path.join('images',self.img+str(self.direction)+'.png')
+        return os.path.join('images', self.img+str(self.direction)+'.png')
 
     def getImgDirection(self,direction):
-        return os.path.join('images',self.img+str(direction)+'.png')
+        return os.path.join('images', self.img+str(direction)+'.png')
 
     def setx(self,x):
         if self.x+x > self.config.getMin() and self.x+x < self.config.getSurfaceW()-self.larg:
