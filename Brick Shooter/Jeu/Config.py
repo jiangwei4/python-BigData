@@ -37,6 +37,10 @@ class Config:
 
         #keyboard
         self.fireKey = pygame.K_a
+        self.upKey = pygame.K_UP
+        self.downKey = pygame.K_DOWN
+        self.rightKey = pygame.K_RIGHT
+        self.leftKey = pygame.K_LEFT
 
         #meteorite
         self.apparitionMeteorite = 7000000000
@@ -121,3 +125,27 @@ class Config:
     
     def setFireKey(self, key):
         self.fireKey = key
+
+    def getUpKey(self):
+        return self.upKey
+    
+    def setUpKey(self, key):
+        self.upKey = key
+
+    def getDownKey(self):
+        return self.downKey
+    
+    def setDownKey(self, key):
+        self.downKey = key
+
+    def getRightKey(self):
+        return self.rightKey
+    
+    def setRightKey(self, key):
+        self.rightKey = key
+
+    def getLeftKey(self):
+        return self.leftKey
+    
+    def setLeftKey(self, key):
+        self.leftKey = key

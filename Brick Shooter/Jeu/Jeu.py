@@ -37,7 +37,7 @@ class Jeu :
 
         self.imgMeteorite = self.loadImg(self.MeteoriteInit.getImg())
         self.imgBullet = [self.loadImg(self.BulletInit.getImgType(0)),self.loadImg(self.BulletInit.getImgType(1))]
-        self.imgFond = self.loadImg("fond.png")
+        self.imgFond = self.loadImg("C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/fond.png")
 
         self.imgVaisseau = []
         self.imgEnnemi = []
@@ -95,21 +95,21 @@ class Jeu :
                         pygame.quit()
                         quit()
 
-                    if event.key == pygame.K_UP:
+                    if event.key == self.config.getUpKey():
                         ya_mvt = -vitesse
                         da = 1
 
-                    if event.key == pygame.K_DOWN:
+                    if event.key == self.config.getDownKey():
                         yb_mvt = vitesse
                         db = 1
                         
 
-                    if event.key == pygame.K_LEFT:
+                    if event.key == self.config.getLeftKey():
                         xa_mvt = -vitesse
                         dc = 1
                        
 
-                    if event.key == pygame.K_RIGHT:
+                    if event.key == self.config.getRightKey():
                         xb_mvt = vitesse
                         dd = 1
                        
@@ -119,16 +119,16 @@ class Jeu :
                         
 
                 if event.type == pygame.KEYUP:
-                    if event.key == pygame.K_UP:
+                    if event.key == self.config.getUpKey():
                         ya_mvt = 0
                         da = 0
-                    if event.key == pygame.K_DOWN:
+                    if event.key == self.config.getDownKey():
                         yb_mvt = 0
                         db = 0
-                    if event.key == pygame.K_LEFT:
+                    if event.key == self.config.getLeftKey():
                         xa_mvt = 0
                         dc = 0
-                    if event.key == pygame.K_RIGHT:
+                    if event.key == self.config.getRightKey():
                         xb_mvt = 0
                         dd = 0
 

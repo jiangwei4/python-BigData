@@ -19,11 +19,19 @@ class Reglages:
         # noms des menus et commandes associées
         
         items = (
-            ('BOUTON TIR', self.updateListen),
+            ('BOUTON TIR', self.changeFireKey),
+            ('BOUTON HAUT', self.changeUpKey),
+            ('BOUTON BAS', self.changeDownKey),
+            ('BOUTON DROITE', self.changeRightKey),
+            # ('BOUTON GAUCHE', self.changeLeftKey),
             ('JOUER', self.jouer),
         )
         self.keys = [
             {"name": "fireKey", "value": self.getKeyString(self.config.getFireKey())},
+            {"name": "upKey", "value": self.getKeyString(self.config.getUpKey())},
+            {"name": "downKey", "value": self.getKeyString(self.config.getDownKey())},
+            {"name": "rightKey", "value": self.getKeyString(self.config.getRightKey())},
+            {"name": "leftKey", "value": self.getKeyString(self.config.getLeftKey())},
         ]
         x = 200
         y = 180
@@ -62,7 +70,8 @@ class Reglages:
             for groupe in groupes :
                 groupe.add(bt)
 
-    def changeKey(self):
+    def changeFireKey(self):
+        self.listenToKey = True
         while self.listenToKey:
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
@@ -72,17 +81,68 @@ class Reglages:
                         quit()
                     else:
                         self.config.setFireKey(event.key)
-                        self.updateKey(event.key)
+                        self.updateKey(event.key, 0)
                         self.listenToKey = False
-    
-    def updateListen(self):
-        self.listenToKey = True
-        self.changeKey()
 
-    def updateKey(self, key):
-        self.keys[0]["value"] = self.getKeyString(key)
-        self._keys[0].changeTexte(self.getKeyString(key))
-        print(self.config.getFireKey())
+    def changeUpKey(self):
+        self.listenToKey = True
+        while self.listenToKey:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        print("I quit")
+                        pygame.quit()
+                        quit()
+                    else:
+                        self.config.setUpKey(event.key)
+                        self.updateKey(event.key, 1)
+                        self.listenToKey = False
+
+    def changeDownKey(self):
+        self.listenToKey = True
+        while self.listenToKey:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        print("I quit")
+                        pygame.quit()
+                        quit()
+                    else:
+                        self.config.setDownKey(event.key)
+                        self.updateKey(event.key, 2)
+                        self.listenToKey = False
+
+    def changeRightKey(self):
+        self.listenToKey = True
+        while self.listenToKey:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        print("I quit")
+                        pygame.quit()
+                        quit()
+                    else:
+                        self.config.setRightKey(event.key)
+                        self.updateKey(event.key, 3)
+                        self.listenToKey = False
+
+    def changeLeftKey(self):
+        self.listenToKey = True
+        while self.listenToKey:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        print("I quit")
+                        pygame.quit()
+                        quit()
+                    else:
+                        self.config.setLeftKey(event.key)
+                        self.updateKey(event.key, 4)
+                        self.listenToKey = False
+
+    def updateKey(self, key, index):
+        self.keys[index]["value"] = self.getKeyString(key)
+        self._keys[index].changeTexte(self.getKeyString(key))
     
     def getKeyString(self, key):
         return pygame.key.name(key)

@@ -2,7 +2,7 @@ import os
 class Bullet:
     def __init__(self,config):
         self.config = config
-        self.img = 'bullet'
+        self.img = 'C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/bullet'
         self.x=0
         self.y=0
         self.larg = 11
