@@ -2,7 +2,7 @@ import time
 import os
 class Ennemi:
     def __init__(self,config,listBullet):
-        self.img = 'images/ennemi'
+        self.img = 'ennemi'
         self.config = config
         self.larg = 40
         self.haut = 40

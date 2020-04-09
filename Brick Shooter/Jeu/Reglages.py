@@ -7,6 +7,7 @@ class Reglages:
         self.config = config
         self.app = app
         self.listenToKey = False
+        self._fenetre = reglages.fenetre
         self.fireKey = self.config.getFireKey()
         
         self.couleurs = dict(
@@ -14,6 +15,7 @@ class Reglages:
             survol=self.config.getCouleurButtonHover(),
         )
         font = pygame.font.SysFont('Helvetica', 24, bold=True)
+        self._fenetre.fill(self.config.getBlue())
         
         # noms des menus et commandes associées
         

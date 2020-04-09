@@ -3,7 +3,7 @@ import random
 class Meteorite:
     def __init__(self,config):
         self.config = config
-        self.img = 'images/meteorite'
+        self.img = 'meteorite'
         self.x=0
         self.y=0
         self.larg = 153
