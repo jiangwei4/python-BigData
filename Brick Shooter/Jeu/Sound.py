@@ -12,7 +12,7 @@ class Sound:
         #pygame.mixer.Channel(1).play(pygame.mixer.music.load(os.path.join('sons',"1428.mp3")))
 
     def start(self):
-        pygame.mixer.music.load(os.path.join('C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/sons',"E1M1.mid"))
+        pygame.mixer.music.load(os.path.join('sons',"E1M1.mid"))
         pygame.mixer.music.play()
 
     def inAcceuil(self):

@@ -4,7 +4,7 @@ import os
 
 class Vaisseau:
     def __init__(self, config,listBullet):
-        self.img = 'C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/vaisseau'
+        self.img = 'images/vaisseau'
         self.config = config
         self.x=self.config.getSurfaceW()/2-40
         self.y=self.config.getSurfaceH()/2-40

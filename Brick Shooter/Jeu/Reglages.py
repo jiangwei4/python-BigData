@@ -1,7 +1,6 @@
 import pygame
 from MenuBouton import MenuBouton
 from BlocTexte import BlocTexte
-from Jeu import Jeu
 
 class Reglages:
     def __init__(self, reglages, config, app, *groupes):
@@ -23,7 +22,7 @@ class Reglages:
             ('BOUTON HAUT', self.changeUpKey),
             ('BOUTON BAS', self.changeDownKey),
             ('BOUTON DROITE', self.changeRightKey),
-            # ('BOUTON GAUCHE', self.changeLeftKey),
+            ('BOUTON GAUCHE', self.changeLeftKey),
             ('JOUER', self.jouer),
         )
         self.keys = [
@@ -48,7 +47,7 @@ class Reglages:
                 cmd
             )
             self._boutons.append(mb)
-            y += 120
+            y += 60
             for groupe in groupes :
                 groupe.add(mb)
            
@@ -66,7 +65,7 @@ class Reglages:
                 50
             )
             self._keys.append(bt)
-            y += 120
+            y += 60
             for groupe in groupes :
                 groupe.add(bt)
 

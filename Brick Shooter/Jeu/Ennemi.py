@@ -2,7 +2,7 @@ import time
 import os
 class Ennemi:
     def __init__(self,config,listBullet):
-        self.img = 'C:/Users/juanito/Documents/Projets/python-BigData/Brick Shooter/Jeu/images/ennemi'
+        self.img = 'images/ennemi'
         self.config = config
         self.larg = 40
         self.haut = 40
