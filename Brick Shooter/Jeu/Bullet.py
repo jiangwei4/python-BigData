@@ -2,7 +2,7 @@ import os
 class Bullet:
     def __init__(self,config):
         self.config = config
-        self.img = 'images/bullet'
+        self.img = 'bullet'
         self.x=0
         self.y=0
         self.larg = 11
