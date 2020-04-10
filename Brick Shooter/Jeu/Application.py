@@ -9,14 +9,12 @@ pygame.mixer.init()
 
 class Application :
     """ Classe maîtresse gérant les différentes interfaces du jeu """
-    son = pygame.mixer.Sound("sons/song/doom2.wav")
     def __init__(self) :
         self.config = Config()
         pygame.init()
         pygame.display.set_caption("ISN ILIES")
  
         self.fond = self.config.getBlue()
-        self.son.play()
  
         self.fenetre = pygame.display.set_mode((self.config.getSurfaceW(),self.config.getSurfaceH()),pygame.FULLSCREEN)#pygame.display.set_mode((surfaceW,surfaceH))
         
