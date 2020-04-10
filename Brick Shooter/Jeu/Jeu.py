@@ -16,7 +16,8 @@ from Ennemi import Ennemi
 
 class Jeu :
     
-    def __init__(self, jeu, config, *groupes) :
+    def __init__(self, jeu, config,app, *groupes) :
+        self.app = app
         self._fenetre = jeu.fenetre
         #jeu.fond = (0, 0, 0)
  
@@ -49,9 +50,7 @@ class Jeu :
             self.imgVaisseau.append(imgV)
             self.imgEnnemi.append(imgE)
 
-        self.run()
         
-
     
     def getSurface(self):
         return self._fenetre
@@ -81,12 +80,15 @@ class Jeu :
 
         self.sound.start()
         vitesse = self.Vaisseau.getMouvementSpeed()
-        while True:
+        mybool = True
+        while mybool:
             if self.Vaisseau.getLife()<=0:
                 ##game over 
                 self.gameover.go()
-                return True
-                #quit()
+                self.update()
+                time.sleep(2)
+                mybool = False
+
             
             for event in pygame.event.get():
               
@@ -183,3 +185,9 @@ class Jeu :
                 self.position(self.imgVaisseau[self.Vaisseau.getDirection()],self.Vaisseau.getx(),self.Vaisseau.gety())
             self.hud.hud()
             self.update()
+                
+        
+        
+        self.app.menu()
+
+        

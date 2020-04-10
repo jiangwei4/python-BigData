@@ -1,4 +1,5 @@
 import pygame
+import time
 class GameOver:
     def __init__(self,Jeu):
         self._fenetre = Jeu.fenetre
@@ -10,3 +11,5 @@ class GameOver:
         self.textRect = self.text.get_rect()   
         self.textRect.center = (1920/2, 1080/2) 
         self._fenetre.blit(self.text, self.textRect)
+        
+        

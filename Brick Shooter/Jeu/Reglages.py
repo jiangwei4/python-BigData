@@ -2,6 +2,7 @@ import pygame
 from MenuBouton import MenuBouton
 from BlocTexte import BlocTexte
 
+
 class Reglages:
     def __init__(self, reglages, config, app, *groupes):
         self.config = config
@@ -25,7 +26,7 @@ class Reglages:
             ('BOUTON BAS', self.changeDownKey),
             ('BOUTON DROITE', self.changeRightKey),
             ('BOUTON GAUCHE', self.changeLeftKey),
-            ('JOUER', self.jouer),
+            ('RETOUR', self.retourMenu),
         )
         self.keys = [
             {"name": "fireKey", "value": self.getKeyString(self.config.getFireKey())},
@@ -148,8 +149,8 @@ class Reglages:
     def getKeyString(self, key):
         return pygame.key.name(key)
     
-    def jouer(self):
-        self.app.continuer()
+    def retourMenu(self):
+        self.app.menu()
  
     def update(self, events) :
         clicGauche, *_ = pygame.mouse.get_pressed()

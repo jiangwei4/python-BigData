@@ -18,7 +18,7 @@ class Application :
 
  
         self.fenetre = pygame.display.set_mode((self.config.getSurfaceW(),self.config.getSurfaceH()),pygame.FULLSCREEN)#pygame.display.set_mode((surfaceW,surfaceH))
-        self.fenetre.blit(pygame.image.load("images/acceuil.jpg"),(0,0))
+        
 
         self.sound = Sound()
         self.sound.inAcceuil()
@@ -46,7 +46,8 @@ class Application :
  
     def continuer(self):
         self._initialiser()
-        self.ecran = Jeu(self, self.config, self.groupeGlobal)
+        self.ecran = Jeu(self, self.config,app, self.groupeGlobal)
+        self.ecran.run()
 
     def nouvellePartie(self):
         self._initialiser()
@@ -80,7 +81,7 @@ class Application :
         self.groupeGlobal.draw(self.fenetre)
         pygame.display.update()
  
- 
+
 app = Application()
 app.menu()
  

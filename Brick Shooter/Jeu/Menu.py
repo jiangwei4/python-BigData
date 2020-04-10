@@ -6,6 +6,8 @@ class Menu :
     """ Création et gestion des boutons d'un menu """
     def __init__(self,application, *groupes) :
         self.config = Config()
+        self.fenetre = application.fenetre
+        self.fenetre.blit(pygame.image.load("images/acceuil.jpg"),(0,0))
         self.couleurs = dict(
             normal=self.config.getCouleurButton(),
             survol=self.config.getCouleurButtonHover(),
