@@ -59,7 +59,8 @@ class Application :
         self._initialiser()
     def magasin(self):
         self._initialiser()
-        self.ecran = Magasin(self, self.config, app, self.groupeGlobal)
+        self.ecran = Magasin(self, self.config,self.vaisseau, app, self.groupeGlobal)
+        
     def credits(self):
         self._initialiser()
     def sauvegarder(self):

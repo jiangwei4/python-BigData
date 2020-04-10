@@ -1,15 +1,14 @@
 
 import pygame
-from Config import Config
 from MenuBouton import MenuBouton
 class Magasin :
     """ Création et gestion des boutons d'un menu """
-    def __init__(self,magasin,config, app, *groupes) :
+    def __init__(self,magasin,config,vaisseau, app, *groupes) :
         self.config = config
         self.app = app
         self.listenToKey = False
         self._fenetre = magasin.fenetre
-        
+        self.vaisseau = vaisseau
         self.couleurs = dict(
             normal=self.config.getCouleurButton(),
             survol=self.config.getCouleurButtonHover(),
@@ -52,63 +51,25 @@ class Magasin :
         
 
     def vie(self):
-        return True
+        self.config.setLife(self.config.getLife()+1)
+        self.vaisseau.vaisseauUpdate()
+
 
     def bouclier(self):
-        self.listenToKey = True
-        while self.listenToKey:
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        print("I quit")
-                        pygame.quit()
-                        quit()
-                    else:
-                        self.config.setUpKey(event.key)
-                        self.updateKey(event.key, 1)
-                        self.listenToKey = False
+        self.config.setShield(self.config.getShield()+1)
+        self.vaisseau.vaisseauUpdate()
 
     def vitesseBouclier(self):
-        self.listenToKey = True
-        while self.listenToKey:
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        print("I quit")
-                        pygame.quit()
-                        quit()
-                    else:
-                        self.config.setDownKey(event.key)
-                        self.updateKey(event.key, 2)
-                        self.listenToKey = False
+        self.config.setSpeedShield(self.config.getSpeedShield()+1)
+        self.vaisseau.vaisseauUpdate()
 
     def vitesseDeplacement(self):
-        self.listenToKey = True
-        while self.listenToKey:
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        print("I quit")
-                        pygame.quit()
-                        quit()
-                    else:
-                        self.config.setRightKey(event.key)
-                        self.updateKey(event.key, 3)
-                        self.listenToKey = False
+        self.config.setMouvementSpeed(self.config.getMouvementSpeed()+1)
+        self.vaisseau.vaisseauUpdate()
 
     def vitesseTir(self):
-        self.listenToKey = True
-        while self.listenToKey:
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        print("I quit")
-                        pygame.quit()
-                        quit()
-                    else:
-                        self.config.setLeftKey(event.key)
-                        self.updateKey(event.key, 4)
-                        self.listenToKey = False
+        self.config.setRapidFire(self.config.getRapidFire()+50000000)
+        self.vaisseau.vaisseauUpdate()
 
     
     

@@ -24,7 +24,7 @@ class Config:
         self.mouvementSpeed = 4
         self.life = 1
         self.shield = 0
-        self.speedshield = 1
+        self.speedshield = 5
         self.invincible = 2
 
         #bullet
@@ -66,6 +66,9 @@ class Config:
     def getMouvementSpeed(self):
         return self.mouvementSpeed
 
+    def setMouvementSpeed(self,mvt):
+        self.mouvementSpeed = mvt
+
     def getLife(self):
         return self.life
     
@@ -80,6 +83,9 @@ class Config:
 
     def getSpeedShield(self):
         return self.speedshield
+
+    def setSpeedShield(self,val):
+        self.speedshield = val
 
     def getRapidFire(self):
         return self.rapidFire

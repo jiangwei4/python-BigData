@@ -24,6 +24,7 @@ class Vaisseau:
         self.type = 0
 
         self.lastTouch = 0##en sec
+        self.shieldLastTouch = 0
 
         self.zoneTirx = 0
         self.zoneTiry = 0
@@ -102,10 +103,14 @@ class Vaisseau:
         return self.life
     
     def setLife(self, life):
-        if time.time() > self.lastTouch + self.config.getInvincible():
-            self.life = life
-            self.lastTouch = time.time()
-            self.invincible = True
+        if self.shield > 0:
+            self.shieldLastTouch = time.time()
+            self.shield -= 1
+        else :
+            if time.time() > self.lastTouch + self.config.getInvincible():
+                self.life = life
+                self.lastTouch = time.time()
+                self.invincible = True
 
     def getShield(self):
         return self.shield
@@ -129,6 +134,15 @@ class Vaisseau:
     def update(self):
         if time.time() > self.lastTouch + self.config.getInvincible():
             self.invincible = False
+        if time.time() > self.shieldLastTouch + self.config.speedshield:
+            self.shield = self.config.getShield()
+
+
+    def vaisseauUpdate(self):
+        self.mouvementSpeed = self.config.getMouvementSpeed()
+        self.life = self.config.getLife()
+        self.shield = self.config.getShield()
+        self.speedshield = self.config.getSpeedShield()
 
 
     
