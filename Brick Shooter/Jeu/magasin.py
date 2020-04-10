@@ -2,21 +2,32 @@
 import pygame
 from Config import Config
 from MenuBouton import MenuBouton
-class magasin :
+class Magasin :
     """ Création et gestion des boutons d'un menu """
-    def __init__(self,application, *groupes) :
-        self.config = Config()
+    def __init__(self,magasin,config, app, *groupes) :
+        self.config = config
+        self.app = app
+        self.listenToKey = False
+        self._fenetre = magasin.fenetre
+        
         self.couleurs = dict(
             normal=self.config.getCouleurButton(),
             survol=self.config.getCouleurButtonHover(),
         )
         font = pygame.font.SysFont('Helvetica', 24, bold=True)
+        self._fenetre.blit(pygame.image.load("images/acceuil.jpg"),(0,0))
+        
         # noms des menus et commandes associées
+        
         items = (
-            ('JOUER', application.continuer),
-            ('NOUVELLE PARTIE', application.nouvellePartie)
-            
+            ('Vie', self.vie),
+            ('Bouclier', self.bouclier),
+            ('Vitesse de tir', self.vitesseTir),
+            ('Vitesse rechargement du bouclier', self.vitesseBouclier),
+            ('Vitesse de deplacement', self.vitesseDeplacement),
+            ('RETOUR', self.retourMenu),
         )
+
         x = 200
         y = 180
         self._boutons = []
@@ -32,9 +43,77 @@ class magasin :
                 cmd
             )
             self._boutons.append(mb)
-            y += 120
+            y += 60
             for groupe in groupes :
                 groupe.add(mb)
+           
+        x = 800
+        y = 180
+        
+
+    def vie(self):
+        return True
+
+    def bouclier(self):
+        self.listenToKey = True
+        while self.listenToKey:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        print("I quit")
+                        pygame.quit()
+                        quit()
+                    else:
+                        self.config.setUpKey(event.key)
+                        self.updateKey(event.key, 1)
+                        self.listenToKey = False
+
+    def vitesseBouclier(self):
+        self.listenToKey = True
+        while self.listenToKey:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        print("I quit")
+                        pygame.quit()
+                        quit()
+                    else:
+                        self.config.setDownKey(event.key)
+                        self.updateKey(event.key, 2)
+                        self.listenToKey = False
+
+    def vitesseDeplacement(self):
+        self.listenToKey = True
+        while self.listenToKey:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        print("I quit")
+                        pygame.quit()
+                        quit()
+                    else:
+                        self.config.setRightKey(event.key)
+                        self.updateKey(event.key, 3)
+                        self.listenToKey = False
+
+    def vitesseTir(self):
+        self.listenToKey = True
+        while self.listenToKey:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        print("I quit")
+                        pygame.quit()
+                        quit()
+                    else:
+                        self.config.setLeftKey(event.key)
+                        self.updateKey(event.key, 4)
+                        self.listenToKey = False
+
+    
+    
+    def retourMenu(self):
+        self.app.menu()
  
     def update(self, events) :
         clicGauche, *_ = pygame.mouse.get_pressed()

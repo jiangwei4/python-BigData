@@ -16,7 +16,7 @@ from Ennemi import Ennemi
 
 class Jeu :
     
-    def __init__(self, jeu, config,app, *groupes) :
+    def __init__(self, jeu, config,vaisseau,listBullet,app, *groupes) :
         self.app = app
         self._fenetre = jeu.fenetre
         #jeu.fond = (0, 0, 0)
@@ -24,8 +24,8 @@ class Jeu :
         self.config = config
         self.jeu = jeu
         self.sound = Sound()#jeu)
-        self.listBullet = ListBullet(self.config)
-        self.Vaisseau = Vaisseau(self.config,self.listBullet)
+        self.listBullet = listBullet
+        self.Vaisseau = vaisseau
         self.hud = Hud(jeu,self.Vaisseau)
         self.gameover = GameOver(self.jeu)
         

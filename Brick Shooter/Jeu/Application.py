@@ -3,8 +3,10 @@ from Menu import Menu
 from Jeu import Jeu
 from Config import Config
 from Reglages import Reglages
-from magasin import magasin
+from Magasin import Magasin
 from Sound import Sound
+from Vaisseau import Vaisseau
+from ListBullet import ListBullet
 pygame.mixer.init()
 
 class Application :
@@ -24,6 +26,8 @@ class Application :
         # Groupe de sprites utilisé pour l'affichage
         self.groupeGlobal = pygame.sprite.Group()
         self.statut = True
+        self.listBullet = ListBullet(self.config)
+        self.vaisseau = Vaisseau(self.config,self.listBullet)
  
     def _initialiser(self) :
         try:
@@ -41,11 +45,11 @@ class Application :
     def jeu(self) :
         # Affichage du jeu
         self._initialiser()
-        self.ecran = Jeu(self, self.config, self.groupeGlobal)
+        self.ecran = Jeu(self, self.config, self.vaisseau,self.listBullet,app, self.groupeGlobal)
  
     def continuer(self):
         self._initialiser()
-        self.ecran = Jeu(self, self.config,app, self.groupeGlobal)
+        self.ecran = Jeu(self, self.config,self.vaisseau,self.listBullet,app, self.groupeGlobal)
         self.ecran.run()
 
     def nouvellePartie(self):
@@ -55,6 +59,7 @@ class Application :
         self._initialiser()
     def magasin(self):
         self._initialiser()
+        self.ecran = Magasin(self, self.config, app, self.groupeGlobal)
     def credits(self):
         self._initialiser()
     def sauvegarder(self):
