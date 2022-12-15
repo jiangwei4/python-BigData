@@ -1,7 +1,7 @@
-from Meteorite import Meteorite
+from Ingame.Meteorite import Meteorite
 import time
 import random
-from Animation import Animation
+from Ingame.Animation import Animation
 
 class ListMeteorite:
     def __init__(self,config,listBullet,listEnnemi,sound,jeu,vaisseau):

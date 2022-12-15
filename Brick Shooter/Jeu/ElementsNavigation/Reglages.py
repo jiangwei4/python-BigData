@@ -1,6 +1,6 @@
 import pygame
-from MenuBouton import MenuBouton
-from BlocTexte import BlocTexte
+from ElementsNavigation.MenuBouton import MenuBouton
+from ElementsNavigation.BlocTexte import BlocTexte
 
 
 class Reglages:

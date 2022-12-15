@@ -1,7 +1,7 @@
 import pygame
 import time
 import threading 
-from Vaisseau import Vaisseau
+from Ingame.Vaisseau import Vaisseau
 
 class AnimationInvincible(threading.Thread):
     def __init__(self,Jeu,vaisseau,config, *args, **kwargs): 

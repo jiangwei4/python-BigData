@@ -1,18 +1,20 @@
 import pygame
-from Vaisseau import Vaisseau
+from Ingame.Vaisseau import Vaisseau
 import time
-from ListBullet import ListBullet
-from Config import Config
-from ListEnnemi import ListEnnemi
-from Sound import Sound
-from Hud import Hud
-from AnimationInvincible import AnimationInvincible
-from GameOver import GameOver
+import json
+from Ingame.ListBullet import ListBullet
+from ElementsNavigation.Config import Config
+from Ingame.ListEnnemi import ListEnnemi
+from Extra.Sound import Sound
+from Extra.Hud import Hud
+from Ingame.AnimationInvincible import AnimationInvincible
+from ElementsNavigation.GameOver import GameOver
+import math
 
-from ListMeteorite import ListMeteorite
-from Meteorite import Meteorite
-from Bullet import Bullet
-from Ennemi import Ennemi
+from Ingame.ListMeteorite import ListMeteorite
+from Ingame.Meteorite import Meteorite
+from Ingame.Bullet import Bullet
+from Ingame.Ennemi import Ennemi
 
 class Jeu :
     
@@ -49,7 +51,6 @@ class Jeu :
             imgE = self.loadImg(self.EnnemiInit.getImgDirection(i))
             self.imgVaisseau.append(imgV)
             self.imgEnnemi.append(imgE)
-
         
     
     def getSurface(self):
@@ -66,6 +67,28 @@ class Jeu :
     def position(self,img,x,y):
         self._fenetre.blit(img,(x,y))
 
+    def recap(self):
+        listeEnnemyJson = []
+        for enemy in self.listEnnemi.getListE(): 
+            listeEnnemyJson.append({'pos_x':enemy.getx(),'pos_y':enemy.gety()})
+        listeMeteorJson = []
+        for meteor in self.listMeteorite.getListM(): 
+            listeMeteorJson.append({'pos_x':meteor.getx(),'pos_y':meteor.gety()})
+        listeBulletJson = []
+        for bullet in self.listBullet.getListB():
+            if bullet.getType() == 1:
+                listeBulletJson.append({'pos_x':bullet.getx(),'pos_y':bullet.gety()})
+        obj = {"life":self.Vaisseau.getLife(),
+                "pos_x":self.Vaisseau.getx(),
+                "pos_y":self.Vaisseau.getx(),
+                "shield":self.Vaisseau.getShield(),
+                "point":self.Vaisseau.getPoint(),
+                "liste_ennemy":listeEnnemyJson,
+                "liste_meteor":listeMeteorJson,
+                "liste_bullet":listeBulletJson}
+        print(obj)
+        
+
     def run(self):
         xa_mvt = 0
         ya_mvt = 0
@@ -77,7 +100,6 @@ class Jeu :
         dd=0
         tir = False
         listsBullet = []
-
         self.sound.start()
         vitesse = self.Vaisseau.getMouvementSpeed()
         mybool = True
@@ -85,6 +107,7 @@ class Jeu :
             if self.Vaisseau.getLife()<=0:
                 ##game over 
                 self.gameover.go()
+                self.sound.stop()
                 self.update()
                 time.sleep(2)
                 mybool = False
@@ -143,6 +166,7 @@ class Jeu :
 
                         
             time.sleep(0.02)
+
             #self._fenetre.fill(self.config.getBlue())
             self.position(self.imgFond,0,0)
             ###### ajout un enemey
@@ -172,9 +196,13 @@ class Jeu :
                 self.position(self.imgBullet[elem.getType()],self.listBullet.getxElemListB(elem),self.listBullet.getyElemListB(elem)) 
 
             self.Vaisseau.setDirection(da,db,dc,dd)
-            self.Vaisseau.setx(xa_mvt+xb_mvt)
-           
-            self.Vaisseau.sety(ya_mvt+yb_mvt)
+            
+            if((xa_mvt+xb_mvt) != 0 and (ya_mvt+yb_mvt) !=0):
+                self.Vaisseau.setx((xa_mvt+xb_mvt)*math.sqrt(0.5))
+                self.Vaisseau.sety((ya_mvt+yb_mvt)*math.sqrt(0.5))
+            else:
+                self.Vaisseau.setx(xa_mvt+xb_mvt)
+                self.Vaisseau.sety(ya_mvt+yb_mvt)
             self.Vaisseau.update()
             if self.Vaisseau.getInvincible():
                 if self.Vaisseau.getInvincibleLancer() == False:
@@ -183,8 +211,10 @@ class Jeu :
                     t1.start()            
             else :
                 self.position(self.imgVaisseau[self.Vaisseau.getDirection()],self.Vaisseau.getx(),self.Vaisseau.gety())
+ 
             self.hud.hud()
             self.update()
+            #self.recap()
                 
         
         

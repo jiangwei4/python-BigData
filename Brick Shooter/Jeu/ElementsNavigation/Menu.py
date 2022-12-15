@@ -1,7 +1,7 @@
 
 import pygame
-from Config import Config
-from MenuBouton import MenuBouton
+from ElementsNavigation.Config import Config
+from ElementsNavigation.MenuBouton import MenuBouton
 class Menu :
     """ Création et gestion des boutons d'un menu """
     def __init__(self,application, *groupes) :

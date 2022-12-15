@@ -144,5 +144,8 @@ class Vaisseau:
         self.shield = self.config.getShield()
         self.speedshield = self.config.getSpeedShield()
 
+    def getShieldLastTouch(self):
+        return self.shieldLastTouch
+
 
     

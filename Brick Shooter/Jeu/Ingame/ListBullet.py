@@ -1,4 +1,4 @@
-from Bullet import Bullet
+from Ingame.Bullet import Bullet
 import time
 
 class ListBullet:

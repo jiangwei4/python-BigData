@@ -42,6 +42,7 @@ class Ennemi:
             dc = 0
             dd = 0
         
+        
         tmp = [da,dc,db,dd]
         
         if tmp in self.config.getDirecitonPossible():

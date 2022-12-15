@@ -1,7 +1,7 @@
-from Ennemi import Ennemi
+from Ingame.Ennemi import Ennemi
 import time
 import random
-from Animation import Animation
+from Ingame.Animation import Animation
 
 class ListEnnemi:
     def __init__(self,config,listB,vaisseau, listBullet,jeu,sound):
@@ -74,6 +74,7 @@ class ListEnnemi:
 
     def update(self):
         cpt = 0
+        F_p_p = 10
         for elem in self.listE:
             cpt += 1
             da=0
@@ -82,16 +83,16 @@ class ListEnnemi:
             dd=0
             #direction
             
-            if elem.getx() > self.vaisseau.getx():
+            if elem.getx() - F_p_p > self.vaisseau.getx():
                 dc=1
 
-            if elem.getx() < self.vaisseau.getx():
+            if elem.getx() + F_p_p < self.vaisseau.getx():
                 dd=1
             
-            if elem.gety() > self.vaisseau.gety():
+            if elem.gety() - F_p_p > self.vaisseau.gety():
                 da=1
 
-            if elem.gety() < self.vaisseau.gety():
+            if elem.gety() + F_p_p < self.vaisseau.gety():
                 db=1
 
 
@@ -126,7 +127,7 @@ class ListEnnemi:
                             if self.vaisseau.getLife() <= 0:
                                 t1 = Animation(self.jeu,self.vaisseau.getx(),self.vaisseau.gety())
                                 t1.start()
-
-
+        print(self.listBullet.getListB())
+        return self.listBullet
         
 

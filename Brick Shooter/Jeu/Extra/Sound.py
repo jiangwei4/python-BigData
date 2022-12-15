@@ -15,5 +15,8 @@ class Sound:
         pygame.mixer.music.load(os.path.join('sons',"E1M1.mid"))
         pygame.mixer.music.play()
 
+    def stop(self):
+        pygame.mixer.music.stop()
+
     def inAcceuil(self):
         return True

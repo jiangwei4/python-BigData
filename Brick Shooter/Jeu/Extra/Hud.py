@@ -1,4 +1,5 @@
 import pygame
+import time
 
 class Hud:
     def __init__(self,Jeu,vaisseau):
@@ -23,3 +24,11 @@ class Hud:
         self.textRect4 = self.text4.get_rect()   
         self.textRect4.center = (120, 1040) 
         self._fenetre.blit(self.text4, self.textRect4)
+
+        cal = round(self.vaisseau.getShieldLastTouch() + self.vaisseau.getSpeedShield() - time.time())+1
+        if cal >= 1:
+            self.text5 = self.font.render('Shield wait : '+str(cal), True, self.green) 
+            self.textRect5 = self.text5.get_rect()   
+            self.textRect5.center = (820, 1040) 
+            self._fenetre.blit(self.text5, self.textRect5)
+

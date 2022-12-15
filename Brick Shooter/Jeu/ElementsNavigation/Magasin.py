@@ -1,7 +1,8 @@
 
 import pygame
-from MenuBouton import MenuBouton
-from BlocTexte import BlocTexte
+from ElementsNavigation.MenuBouton import MenuBouton
+from ElementsNavigation.BlocTexte import BlocTexte
+
 class Magasin :
     """ Création et gestion des boutons d'un menu """
     def __init__(self,magasin,config,vaisseau, app, *groupes) :

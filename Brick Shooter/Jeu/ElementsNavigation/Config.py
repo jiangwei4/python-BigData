@@ -23,7 +23,7 @@ class Config:
         self.rapidFire = 400000000 
         self.mouvementSpeed = 4
         self.life = 1
-        self.shield = 0
+        self.shield = 4
         self.speedshield = 5
         self.invincible = 2
 

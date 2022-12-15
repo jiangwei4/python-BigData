@@ -1,12 +1,12 @@
 import pygame
-from Menu import Menu
-from Jeu import Jeu
-from Config import Config
-from Reglages import Reglages
-from Magasin import Magasin
-from Sound import Sound
-from Vaisseau import Vaisseau
-from ListBullet import ListBullet
+from ElementsNavigation.Menu import Menu
+from ElementsNavigation.Jeu import Jeu
+from ElementsNavigation.Config import Config
+from ElementsNavigation.Reglages import Reglages
+from ElementsNavigation.Magasin import Magasin
+from Extra.Sound import Sound
+from Ingame.Vaisseau import Vaisseau
+from Ingame.ListBullet import ListBullet
 pygame.mixer.init()
 
 class Application :
@@ -14,12 +14,12 @@ class Application :
     def __init__(self) :
         self.config = Config()
         pygame.init()
-        pygame.display.set_caption("ISN ILIES")
+        pygame.display.set_caption("XANAX")
  
         self.fond = self.config.getBlue()
  
-        self.fenetre = pygame.display.set_mode((self.config.getSurfaceW(),self.config.getSurfaceH()),pygame.FULLSCREEN)#pygame.display.set_mode((surfaceW,surfaceH))
-        
+        #self.fenetre = pygame.display.set_mode((self.config.getSurfaceW(),self.config.getSurfaceH()),pygame.FULLSCREEN)#pygame.display.set_mode((surfaceW,surfaceH))
+        self.fenetre = pygame.display.set_mode((self.config.getSurfaceW(),self.config.getSurfaceH()))
 
         self.sound = Sound()
         self.sound.inAcceuil()
@@ -49,11 +49,18 @@ class Application :
  
     def continuer(self):
         self._initialiser()
-        self.ecran = Jeu(self, self.config,self.vaisseau,self.listBullet,app, self.groupeGlobal)
+        self.listBullet = ListBullet(self.config)
+        self.vaisseau = Vaisseau(self.config,self.listBullet)
+        self.ecran = Jeu(self, self.config, self.vaisseau,self.listBullet,app, self.groupeGlobal)
         self.ecran.run()
 
     def nouvellePartie(self):
         self._initialiser()
+        self.listBullet = ListBullet(self.config)
+        self.vaisseau = Vaisseau(self.config,self.listBullet)
+        self.ecran = Jeu(self, self.config, self.vaisseau,self.listBullet,app, self.groupeGlobal)
+        self.ecran.run()
+
         #self.ecran = Affichage(self, self.groupeGlobal)
     def chargerPartie(self):
         self._initialiser()
